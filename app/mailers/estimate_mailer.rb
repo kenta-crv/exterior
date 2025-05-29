@@ -1,9 +1,9 @@
 class EstimateMailer < ActionMailer::Base
   include Rails.application.routes.url_helpers
-  default from: "zihanki@factoru.jp"
+  default from: "info@exterior-garden.jp"
   def received_email(estimate)
     @estimate = estimate
-    mail to: "zihanki@factoru.jp"
+    mail to: "info@exterior-garden.jp"
     mail(subject: '自販機ねっとにお見積もり依頼がありました') do |format|
       format.text
     end
@@ -59,7 +59,7 @@ class EstimateMailer < ActionMailer::Base
 
   def status_update_email(comment)
     @comment = comment
-    mail(to: 'zihanki@factoru.jp', from: comment.client.email, subject: 'ステータス更新通知')
+    mail(to: 'info@exterior-garden.jp', from: comment.client.email, subject: 'ステータス更新通知')
   end
 
   def client_public_email(estimate, client, comment)
@@ -72,13 +72,13 @@ class EstimateMailer < ActionMailer::Base
   def net_accept_email(estimate, client)
     @estimate = estimate
     @client = client
-    mail(from: @client.email, to: 'zihanki@factoru.jp', subject: "#{client.company}が案件を受託しました。")
+    mail(from: @client.email, to: 'info@exterior-garden.jp', subject: "#{client.company}が案件を受託しました。")
   end
 
   def net_decline_email(estimate, client)
     @estimate = estimate
     @client = client
-    mail(from: @client.email, to: 'zihanki@factoru.jp', subject: "#{client.company}が案件を辞退しました")
+    mail(from: @client.email, to: 'info@exterior-garden.jp', subject: "#{client.company}が案件を辞退しました")
   end
 
   #催促
@@ -107,7 +107,7 @@ class EstimateMailer < ActionMailer::Base
     @estimate = estimate
     @comment = comment
     @client = client
-    mail(to: "zihanki@factoru.jp", from: client.email, subject: '【#{@estimate.co}】#{@client.company}が提案を行いました')
+    mail(to: "info@exterior-garden.jp", from: client.email, subject: '【#{@estimate.co}】#{@client.company}が提案を行いました')
   end
 
   # ステータスが依頼中の場合の催促メール送信

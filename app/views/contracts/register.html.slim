@@ -1,0 +1,38 @@
+/ app/views/contracts/register.html.slim
+
+h2.headline ログイン情報の登録
+
+= form_with model: @client, url: register_contract_path(@contract), local: true do |f|
+  table.company.responsive-table
+    colgroup
+      col.col-1
+      col.col-2
+      col.col-3
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        = f.email_field :email, value: @client.email, class: 'input', required: true
+      td.label-cell
+        | メールアドレス：
+    
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        = f.password_field :password, class: 'input', required: true
+      td.label-cell
+        | パスワード：
+    
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        = f.password_field :password_confirmation, class: 'input', required: true
+      td.label-cell
+        | パスワード確認：
+
+    tr
+      td colspan="3"
+        = f.submit "登録する", class: "btn btn-danger"

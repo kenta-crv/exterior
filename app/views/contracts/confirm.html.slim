@@ -1,0 +1,96 @@
+- set_meta_tags  title: ''
+- set_meta_tags  description: ''
+
+=  form_for @contract, url: thanks_contracts_path(@contract) do |f|
+  br
+  br
+  .tops-wrapper
+    h2.headline
+      | 加盟店無料登録確認
+  table.company.responsive-table
+      colgroup
+        col.col-1
+        col.col-2
+        col.col-3
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 会社名
+        td.responsive-cell
+         .input-container
+         = f.hidden_field :company
+         = @contract.company
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | お名前
+        td.responsive-cell
+         .input-container
+         = f.hidden_field :name
+         = @contract.name
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 電話番号
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :tel
+          = @contract.tel
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 所在地
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :address
+          = @contract.address
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | メールアドレス
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :email
+          = @contract.email
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 導入予定時期
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :period
+          = @contract.period
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 希望エリア
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :area
+          = @contract.area
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 備考・要望
+        td.responsive-cell
+         .input-container
+          = f.hidden_field :message
+          = @contract.message
+      tr
+       td colspan="3"
+        = f.submit "送信", class:"btn btn-success", data: {behavior: "fb-track"}
+      javascript:
+       document.addEventListener('DOMContentLoaded', function(){
+        var button = document.querySelector("[data-behavior='fb-track']");
+        button.addEventListener('click', function() {
+          fbq('track', 'CompleteRegistration');
+        });
+       });

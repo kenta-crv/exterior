@@ -1,0 +1,37 @@
+- set_meta_tags  title: ''
+- set_meta_tags  description: ''
+
+- set_meta_tags noindex: true
+
+.row
+  br
+  br
+  table.list
+   tr
+     th 会社名
+     th 担当者
+     th 電話番号
+     th メールアドレス
+     th 導入希望
+     th 問い合わせ日
+     th ステータス
+     th 次回営業日
+     th 最新更新日
+     th 削除
+   - @contracts.each do |contract|
+    - latest_advance = contract.advances.order(created_at: :desc).first
+    tr
+     td = link_to contract.company, contract_path(contract), clsss:"store"
+     td = contract.name
+     td = contract.tel
+     td = contract.email
+     td = contract.period
+     td = contract.created_at.strftime("%Y年%m月%d日%H時")
+     td = latest_advance&.status
+     td = latest_advance&.next
+     td = latest_advance&.created_at&.strftime("%Y年%m月%d日%H時")
+     td = link_to '削除', contract_path(contract), method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn btn-danger"
+  br
+    hr.line
+    br
+    = paginate(@contracts)

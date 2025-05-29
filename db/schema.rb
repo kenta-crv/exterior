@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_18_055737) do
+ActiveRecord::Schema.define(version: 2025_05_29_064504) do
+
+  create_table "access_logs", force: :cascade do |t|
+    t.string "source"
+    t.string "path"
+    t.string "ip"
+    t.datetime "accessed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "add_column_to_comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +39,16 @@ ActiveRecord::Schema.define(version: 2024_06_18_055737) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "advances", force: :cascade do |t|
+    t.integer "contract_id", null: false
+    t.string "status"
+    t.datetime "next"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_advances_on_contract_id"
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -42,6 +61,8 @@ ActiveRecord::Schema.define(version: 2024_06_18_055737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "disclosure_clicked_at"
+    t.integer "contract_id"
+    t.index ["contract_id"], name: "index_clients_on_contract_id"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
@@ -172,6 +193,23 @@ ActiveRecord::Schema.define(version: 2024_06_18_055737) do
     t.integer "client_id"
     t.index ["client_id"], name: "index_companies_on_client_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string "company"
+    t.string "name"
+    t.string "tel"
+    t.string "email"
+    t.string "address"
+    t.string "period"
+    t.string "area"
+    t.string "message"
+    t.string "post_title"
+    t.string "president_name"
+    t.string "agree"
+    t.string "contract_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "disclosure_logs", force: :cascade do |t|

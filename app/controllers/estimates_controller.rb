@@ -69,7 +69,6 @@ class EstimatesController < ApplicationController
     # 必要なインスタンス変数の設定
     @comment = @estimate.comment || Comment.new
     @progress = Progress.new
-    @transfer = Transfer.new
     @payment = Payment.new
   end
 

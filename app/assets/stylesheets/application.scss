@@ -17,9 +17,13 @@
 
 @import "bootstrap";
 
+$main_color: #48891D;
+$sub_color: #94A843;
+$asort_color: #4E7034;
+
 body {
   width:100%;
-  margin:0 auto;
+  margin:-12px auto;
 }
 
 
@@ -46,7 +50,7 @@ z-index:150;
   }
 }
   .navi {
-    background-color:var(--main-color);
+    background-color:$main_color;
     line-height:middle;
     height:40px;
     padding-top:10px;
@@ -101,7 +105,7 @@ main {
        @media screen and ( max-width:479px ){font-size:2.0rem;}
       }
    .headline-first:first-letter {
-       color:var(--main-color);
+       color:$main_color;
        font-size:4.0rem;
        @media screen and (max-width:479px ){fint-size:1.8rem;}
        }
@@ -120,7 +124,7 @@ main {
        @media screen and ( max-width:479px ){font-size:2.0rem;}
       }
    h2.before {
-       color:var(--main-color);
+       color:$main_color;
        font-size:3.5rem;
        @media screen and (max-width:479px ){fint-size:1.8rem;}
        }
@@ -142,8 +146,8 @@ main {
         display: inline-block;
         width: 45px;
         height: 2px;
-        border-top: solid 2px var(--main-color);
-        border-bottom: solid 2px var(--main-color);
+        border-top: solid 2px $main_color;
+        border-bottom: solid 2px $main_color;
         }
     h3:before {
        left:0;
@@ -169,8 +173,8 @@ main {
         display: inline-block;
         width: 45px;
         height: 2px;
-        border-top: solid 2px var(--main-color);
-        border-bottom: solid 2px var(--main-color);
+        border-top: solid 2px $main_color;
+        border-bottom: solid 2px $main_color;
         }
     h4:before {
        left:0;
@@ -180,9 +184,9 @@ main {
         }
     
     h5 {
-       color: var(--main-color);
+       color: $main_color;
        margin-left:60px;
-       border: dotted var(--main-color) 2px;/*ドット 色 太さ*/
+       border: dotted $main_color 2px;/*ドット 色 太さ*/
        padding: 0.5em 0.5em 0.5em 2em;
        line-height: 1.5;
        width:60%;
@@ -226,7 +230,7 @@ main {
   font-weight: bold;
   top: 0;
   left: 0;
-  background-color:var(--main-color);
+  background-color:$main_color;
   padding:2px 10px;
   @media screen and ( max-width:479px ){
         margin-top: 15px;
@@ -272,7 +276,7 @@ main {
       font-size:3.6vw;
       font-weight:bold;
       line-height:7vw;
-      color:var(--main-color);
+      color:$main_color;
       text-shadow: 2px 2px 2px #fff, -2px 2px 2px #fff, 2px -2px 2px #fff, -2px -2px 2px #fff, 2px 2px 2px #fff, -2px 2px 2px #fff, 2px -2px 2px #fff, -2px -2px 2px #fff;
       @media(max-width: 748px) {
         text-align:center;
@@ -336,7 +340,15 @@ main {
   text-align:center;
   margin:0 auto;
 }
-
+.red-title {
+  text-align:center;
+  font-size:4.2vw;
+  margin:10px 0 20px;
+  color:red;
+  line-height:5.0vw;
+  font-weight:bold;
+  width:100%;
+}
 .push {
     text-align:center;
     font-size:6.0vw;
@@ -352,7 +364,7 @@ main {
   font-size:6.0vw;
   color:white;
   font-weight:bold;
-  background-color:var(--main-color);
+  background-color:$main_color;
   padding:35px;
 }
 
@@ -382,7 +394,7 @@ dd {
     content: "";
     height: 60px;
     display: block;
-    border-left: 4px dotted var(--main-color);
+    border-left: 4px dotted $main_color;
     position: absolute;
     top: -40px;
     left: -webkit-calc(10% + 30px - 2px);
@@ -398,7 +410,7 @@ dd {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    border: 2px solid var(--main-color);
+    border: 2px solid $main_color;
     border-radius: 10px;
     position: relative;
 }
@@ -414,7 +426,7 @@ dd {
 }
 .flow > li:not(:last-child) dl::before {
     border-width: 22px;
-    border-top-color: var(--main-color);
+    border-top-color: $main_color;
 }
 .flow > li:not(:last-child) dl::after {
     border-width: 20px;
@@ -423,7 +435,7 @@ dd {
 .flow > li dl dt {
     font-size: 20px;
     font-weight: 600;
-    color: var(--main-color);
+    color: $main_color;
     -ms-flex-preferred-size: 20%;
     flex-basis: 25%;
     margin-right: 2vw;
@@ -432,10 +444,10 @@ dd {
 .flow > li dl dt .icon {
     font-size: 12px;
     color: #fff;
-    background: var(--main-color);
-    background: -moz-linear-gradient(left, var(--main-color) 0%, var(--main-color) 100%);
-    background: -webkit-linear-gradient(left, var(--main-color) 0%,var(--main-color) 100%);
-    background: linear-gradient(to right, var(--main-color) 0%,var(--main-color) 100%);
+    background: $main_color;
+    background: -moz-linear-gradient(left, $main_color 0%, $main_color 100%);
+    background: -webkit-linear-gradient(left, $main_color 0%,$main_color 100%);
+    background: linear-gradient(to right, $main_color 0%,$main_color 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b90db', endColorstr='#66d5e9',GradientType=1 );
     padding: 5px 10px;
     margin-bottom: 10px;
@@ -456,7 +468,7 @@ table.company {
   font-size: 1.3vw;
   th, td { padding: 10px; }
   th {
-     background: var(--main-color);
+     background: $main_color;
      vertical-align: middle;
      text-align: left;
      overflow: visible;
@@ -473,7 +485,7 @@ table.company {
         position: absolute;
         pointer-events: none;
         border-color: rgba(136, 183, 213, 0);
-        border-left-color: var(--main-color);
+        border-left-color: $main_color;
         border-width: 10px;
         margin-top: -10px;
         }
@@ -500,7 +512,7 @@ table.company {
  }
 
  .company-cell{
-  background-color:var(--main-color);
+  background-color:$main_color;
   display: inline-block;
   font-size:21px;
   width:100%;
@@ -564,7 +576,7 @@ table.company {
        position: relative;
        pointer-events: none;
        border: 10px solid transparent;
-       border-left: var(--main-color) 10px solid;
+       border-left: $main_color 10px solid;
        margin-top: -10px;
        }
 }
@@ -592,7 +604,7 @@ table.company {
    padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
    color: #494949;/*文字色*/
    background: #f4f4f4;/*背景色*/
-   border-left: solid 5px var(--main-color);/*左線*/
+   border-left: solid 5px $main_color;/*左線*/
    border-bottom: solid 3px #d7d7d7;/*下線*/
    text-align:left;
    padding-left:30px;
@@ -606,11 +618,11 @@ table.company {
 /*hr*/
 .line {
     height:5px;
-    background: var(--main-color);
-    background-image: -webkit-linear-gradient(left, #eee, var(--main-color), #eee);
-    background-image: -moz-linear-gradient(left, #eee, var(--main-color), #eee);
-    background-image: -ms-linear-gradient(left, #eee, var(--main-color), #eee);
-    background-image: -o-linear-gradient(left, #eee, var(--main-color), #eee);
+    background: $main_color;
+    background-image: -webkit-linear-gradient(left, #eee, $main_color, #eee);
+    background-image: -moz-linear-gradient(left, #eee, $main_color, #eee);
+    background-image: -ms-linear-gradient(left, #eee, $main_color, #eee);
+    background-image: -o-linear-gradient(left, #eee, $main_color, #eee);
     width:90%;
 }
 
@@ -618,7 +630,7 @@ table.company {
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
   background: #f4f4f4;/*背景色*/
-  border-left: solid 5px var(--main-color);/*左線*/
+  border-left: solid 5px $main_color;/*左線*/
   border-bottom: solid 3px #d7d7d7;/*下線*/
   text-align:left;
   padding-left:30px;
@@ -661,11 +673,11 @@ table.company {
  /*hr*/
  .line {
      height:1px;
-     background: var(--main-color);
-     background-image: -webkit-linear-gradient(left, #eee, var(--main-color), #eee);
-     background-image: -moz-linear-gradient(left, #eee, var(--main-color), #eee);
-     background-image: -ms-linear-gradient(left, #eee, var(--main-color), #eee);
-     background-image: -o-linear-gradient(left, #eee, var(--main-color), #eee);
+     background: $main_color;
+     background-image: -webkit-linear-gradient(left, #eee, $main_color, #eee);
+     background-image: -moz-linear-gradient(left, #eee, $main_color, #eee);
+     background-image: -ms-linear-gradient(left, #eee, $main_color, #eee);
+     background-image: -o-linear-gradient(left, #eee, $main_color, #eee);
      width:90%;
  }
 
@@ -677,7 +689,7 @@ table.company {
   position:relative;
     h3.head {
       position: relative;
-      background:var(--main-color);
+      background:$main_color;
       line-height: 1.4;
       padding: 0.25em 0.5em;
       margin: 2em 0 0.5em;
@@ -692,7 +704,7 @@ table.company {
       position: absolute;
       font-family: "Font Awesome 5 Free",'Quicksand','Avenir','Arial',sans-serif;
       content: '\f00c Check';
-      background: var(--main-color);
+      background: $main_color;
       color: #fff;
       left: 0px;
       bottom: 100%;
@@ -714,7 +726,7 @@ nav.globalMenuSp {
     z-index: 2;
     top: 0;
     left: 0;
-    background: var(--main-color);
+    background: $main_color;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     text-align: center;
@@ -724,7 +736,7 @@ nav.globalMenuSp {
 }
 
 nav.globalMenuSp ul {
-    background: var(--main-color);
+    background: $main_color;
     margin: 0 auto;
     padding: 0;
     width: 100%;
@@ -760,7 +772,7 @@ nav.globalMenuSp ul li a {
  overflow: hidden;
  width: 90%;
  margin: 0 0 1em 0;
- color: var(--main-color);
+ color: $main_color;
  h4 {
   all: unset;
 }
@@ -872,12 +884,12 @@ footer {
    }
      .maker {
     font-size:21px;
-    color:var(--main-color);
+    color:$main_color;
     font-weight:bold;
   }
   .link {
     font-size:18px;
-    color:var(--main-color);
+    color:$main_color;
   }
 }
 
@@ -916,7 +928,7 @@ footer {
     height: 51px;
     cursor: pointer;
     z-index: 3;
-    background: var(--main-color);
+    background: $main_color;
     text-align: center;
 }
 
@@ -1001,7 +1013,7 @@ footer {
   margin: 20px auto;
   padding: 20px;
   //background-color: #999;
-  border: 2px solid var(--main-color);
+  border: 2px solid $main_color;
   position: relative;
 }
 .box-design14 {
@@ -1033,7 +1045,7 @@ table.free {
   font-size: 1.3vw;
   th, td { padding: 10px; }
   th {
-     background: var(--main-color);
+     background: $main_color;
      vertical-align: middle;
      text-align: left;
      overflow: visible;
@@ -1051,7 +1063,7 @@ table.free {
         position: absolute;
         pointer-events: none;
         border-color: rgba(136, 183, 213, 0);
-        border-left-color: var(--main-color);
+        border-left-color: $main_color;
         border-width: 10px;
         margin-top: -10px;
         }
@@ -1196,3 +1208,61 @@ table.price {
   font-size: 21px;
   margin-bottom: -5px;
 }
+
+
+
+/*テーブル共通*/
+table.review {
+  border: 1px solid #aaa;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  .font-middle{font-size:1.7rem;}
+  .red{color:red;}
+
+  th, td {
+    background: #f4f4f4;
+    padding: 10px;
+    line-height:3rem;
+    font-weight:bold;
+  }
+  .title{
+    background-color:$main_color;
+    font-size: 1.5vw;
+    color:white;}
+  
+  td {
+     vertical-align: middle;
+     text-align: left;
+     overflow: visible;
+     position: relative;
+     color: #333;
+     font-size: 1.3vw;
+     }
+}
+table.left {margin:5px 0px 5px 50px;}
+table.right {margin:5px 50px 5px 0px;}
+
+
+.block-image {
+  width: 80%; // 通常の場合は65%
+}
+@media only screen and (max-width: 599px) { 
+  .block-image {
+      width: 100%; // スマホの場合（575px以下）は90%
+  }
+}
+
+
+.basic {
+  font-size:30px;
+ }
+ .red {
+   color: red;
+   font-size:30px;
+   .biggest {
+    font-size:55px; 
+    margin-top:25px;
+   }
+ }

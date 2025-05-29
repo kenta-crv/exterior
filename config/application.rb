@@ -23,9 +23,9 @@ module Eatery
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
     address: 'smtp.lolipop.jp',
-    domain: 'factoru.jp',
+    domain: 'exterior-garden.jp',
     port: 587,
-    user_name: 'zihanki@factoru.jp',
+    user_name: 'info@exterior-garden.jp',
     password: ENV['EMAIL_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true

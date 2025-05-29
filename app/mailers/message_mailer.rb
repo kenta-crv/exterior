@@ -1,5 +1,5 @@
 class MessageMailer < ActionMailer::Base
-  default from: "zihanki@factoru.jp"
+  default from: "info@exterior-garden.jp"
   def received_email(message)
     @message = message
     @room = message.room
@@ -10,7 +10,7 @@ class MessageMailer < ActionMailer::Base
       @send_user_name = @room.member.company
       @received_user_name = @room.user_name
     end
-    mail to: "zihanki@factoru.jp"
+    mail to: "info@exterior-garden.jp"
     mail(subject: 'メッセージが送信されました') do |format|
       format.text
     end

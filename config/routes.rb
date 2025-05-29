@@ -21,29 +21,16 @@ Rails.application.routes.draw do
   #特集
   get 'faq' => 'top#faq'
   get 'co' => 'top#co'
+  get 'lp' => 'top#lp'
   get 'question' => 'top#question'
 
-  get 'secondhand' => 'top#secondhand'
-  get 'inside' => 'top#inside'
-  get 'outside' => 'top#outside'
-  get 'both' => 'top#both'
+  get 'partner' => 'top#partner'
 
-  get 'lp' => 'top#lp'
 
-  get 'original' => 'top#original'
-
-  get 'cocacola' => 'top#cocacola'
-  get 'suntory' => 'top#suntory'
-  get 'asahi' => 'top#asahi'
-  get 'otsuka' => 'top#otsuka'
-  get 'itoen' => 'top#itoen'
-  get 'dydo' => 'top#dydo'
-  get 'kirin' => 'top#kirin'
-
-  get 'neos' => 'estimates#neos'
   get 'estimates/info' => 'estimates#info'
 
   get 'question' => 'top#question'
+  get 'documents' => 'top#documents'
   get 'business' => 'top#business'
   get 'corporation' => 'top#corporation'  #会社概要
   get 'privacy' => 'top#privacy' #プライバシーポリシー
@@ -55,11 +42,21 @@ Rails.application.routes.draw do
   end
   resources :questions
 
-  resources :purchases do
-    resources :reports
+  resources :contracts do
+    resource :advances
     collection do
       post :confirm
       post :thanks
+    end
+    member do
+      post :send_mail
+      post :send_mail_start #開始日の送信
+      get "info" #案内
+      get "conclusion"
+      get 'register'  # GETリクエストに対応
+      post 'register' # POSTリクエストに対応
+      get "payment" 
+      get "start"
     end
   end
 
@@ -70,12 +67,6 @@ Rails.application.routes.draw do
      member do
        post :update_status
      end
-    end
-    resources :transfers
-    collection do
-      post :confirm
-      post :thanks
-      post :import
     end
     member do
       post :send_mail_cfsl

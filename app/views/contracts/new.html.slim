@@ -1,0 +1,12 @@
+- set_meta_tags  title: ''
+- set_meta_tags  description: ''
+
+- set_meta_tags noindex: true
+
+.tops-wrapper
+  br/
+  h2.headline
+      | 加盟店依頼フォーム
+  br/
+  =  form_for @contract, url: confirm_contracts_path(@contract) do |f|
+    = render 'form', f: f, btn_name: "確認画面"
