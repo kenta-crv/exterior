@@ -14,34 +14,29 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 会社名
-        td.responsive-cell
-          = f.hidden_field :co
-          = @estimate.co
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
           | 担当者名
         td.responsive-cell
-         = f.hidden_field :name
-         = @estimate.name
+          = f.hidden_field :name
+          = @estimate.name
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 電話番号
+          | 携帯番号
         td.responsive-cell
           = f.hidden_field :tel
           = @estimate.tel
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置先住所
+          | 施工先住所
         td.responsive-cell
           = f.hidden_field :address
           = @estimate.address
+  
       tr
         td.label-cell
           strong.label 必須
@@ -50,80 +45,62 @@
         td.responsive-cell
           = f.hidden_field :email
           = @estimate.email
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置先業種
+          | 施工内容
         td.responsive-cell
-          = f.hidden_field :industry
-          = @estimate.industry
+          = f.hidden_field :which_one
+          = @estimate.which_one
+  
       tr
         td.label-cell
-          strong.label.label-blue 任意
+          strong.label.blue_label 任意
         td.arrow-box-cell
-          | 希望自販機
+          | 屋外平米数
         td.responsive-cell
-          = f.hidden_field :vender
-          = @estimate.vender
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | その他の自販機見積もりを希望しますか？
-          br
-          |
-        td.responsive-cell
-         = f.hidden_field :other
-         = @estimate.other
+          = f.hidden_field :square_meter
+          = @estimate.square_meter
+          | m2
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置箇所
+          | 既に他社で見積りや図面を取得済みですか？
         td.responsive-cell
-          = f.hidden_field :installation
-          = @estimate.installation
+          = f.hidden_field :bring
+          = @estimate.bring
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 想定される利用人数
+          | 施工決定における重要点を教えてください。
         td.responsive-cell
-          = f.hidden_field :people
-          = @estimate.people
+          = f.hidden_field :importance
+          = @estimate.importance
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 自販機について
+          | 希望施工予定月
         td.responsive-cell
-          = f.hidden_field :chenge
-          = @estimate.chenge
-      tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | （交換・追加）設置中のメーカー
-        td.responsive-cell
-          = f.hidden_field :change_before
-          = @estimate.change_before
+          = f.hidden_field :schedule
+          = @estimate.schedule
+  
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置目的
-        td.responsive-cell
-          = f.hidden_field :aim
-          = @estimate.aim
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 設置希望時期
+          | いつまでに業者を決定したいですか？
         td.responsive-cell
           = f.hidden_field :period
           = @estimate.period
+  
       tr
         td.label-cell
           strong.label.label-blue 任意
@@ -131,33 +108,8 @@
           | 要望・備考
         td.responsive-cell
           = f.hidden_field :remarks
-          = @estimate.remarks
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 自販機購入及び貸出の検討
-        td.responsive-cell
-          = f.hidden_field :attracting
-          = @estimate.attracting
-      /tr
-        td.label-cell
-          strong.label.label-orange 提案
-        td.arrow-box-cell
-          | 
-        td.responsive-cell
-          |【業界最大5年保証付き中古自販機】
-          br/
-          |各メーカーで売上見込みがないと判断される場合、自販機を設置できなくなります。この場合、弊社で5年保証の付いた中古の自動販売機の提供が可能となります。ご希望頂ける場合は☑︎をお願いします。
-      /tr
-        td.label-cell
-          strong.label.label-orange 提案
-        td.arrow-box-cell
-          | 
-        td.responsive-cell
-          |レンタルサイクルスペースの提供
-          br/
-          |各メーカーで売上見込みがないと判断される場合、自販機を設置できなくなります。この場合、弊社で5年保証の付いた中古の自動販売機の提供が可能となります。ご希望頂ける場合は☑︎をお願いします。
+          = simple_format(@estimate.remarks)
+
       tr
         td colspan="3"
          .center

@@ -4,16 +4,21 @@ class CreateEstimates < ActiveRecord::Migration[5.2]
       t.string :co #会社名
       t.string :name  #名前
       t.string :tel #電話番号
-      t.string :email #メールアドレス
       t.string :postnumber #郵便番号
-      t.string :address #住所
-      t.string :installation #設置箇所
-      t.string :people #屋内の場合、使用が想定される人数
-      t.string :chenge #自販機交換か
-      t.string :change_before #交換前自販機
-      t.string :importance #重要な点
-      t.string :period #設置希望時期
+      t.string :address #施工先住所
+      t.string :email #メールアドレス
+      t.string :which_one #新築or改築
+      t.string :square_meter #平米
+      t.string :schedule #施工予定月
+      t.string :bring #既に他社で見積もりや図面を取得しているか？
+      t.string :importance #施工決定における重要点
+      t.string :period #いつまでに決めたいか
       t.string :remarks #要望
+      t.integer :user_id
+      t.boolean :send_mail_flag, default: false
+      t.boolean :disclosed
+      t.boolean :accepted_by_client
+
       t.timestamps
     end
   end

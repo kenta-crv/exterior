@@ -15,14 +15,6 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 会社名
-        td.responsive-cell
-         .input-container
-          = f.text_field :co, placeholder:"※個人の場合は担当者名・アパート設置はアパート名を記載"
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
           | 担当者名
         td.responsive-cell
          .input-container
@@ -31,7 +23,7 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 電話番号
+          | 携帯番号
         td.responsive-cell
          .input-container
           = f.telephone_field :tel
@@ -39,10 +31,10 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置先住所
+          | 施工先住所
         td.responsive-cell
          .input-container
-          = f.text_field :address, placeholder:"※必ず番地まで記載をお願い致します。"
+          = f.text_field :address, placeholder:"※わかる範囲で詳細まで記載をお願い致します。"
       tr
         td.label-cell
           strong.label 必須
@@ -55,263 +47,63 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置先業種（個人の場合『個人』と入力）
+          | 施工内容
         td.responsive-cell
          .input-container
-          = f.text_field :industry, placeholder:"※ex.飲食店・介護事業社・建設業等"
-      - if request.referer&.include?("/cocacola")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"コカコーラ"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/asahi")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"アサヒ"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/dydo")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"ダイドー"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/itoen")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"伊藤園"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/suntory")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"サントリー"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/kirin")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-           = f.text_field :vender, value:"キリン"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-           = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-           .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      - elsif request.referer&.include?("/otsuka")
-       tr
-         td.label-cell
-           strong.label.label-blue
-         td.arrow-box-cell
-           | 希望自販機
-           br
-           |（※入力不要）
-         td.responsive-cell
-          .input-container
-            = f.text_field :vender, value:"大塚製薬"
-       tr
-         td.label-cell
-           strong.label 必須
-         td.arrow-box-cell
-           | その他の自販機見積もりを希望しますか？
-           br
-           |
-         td.responsive-cell
-          .input-container
-            = f.select(:other,[\
-             ["はい","はい"],\
-             ["いいえ","いいえ"],\
-            ])
-          .small
-            |（※相見積もり比較出来る点や、希望自販機が設置できない場合があるため『はい』がおすすめ）
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 設置箇所
-        td.responsive-cell
-         .input-container
-          = f.select(:installation,[\
-          ["屋内","屋内"],
-          ["屋外","屋外"],
-          ["未定","未定"],
+          = f.select(:which_one,[\
+          ["新築","新築"],
+          ["全体リフォーム","全体リフォーム"],
+          ["一部リフォーム","一部リフォーム"],
           ],include_blank: "選択してください")
       tr
         td.label-cell
-          strong.label 必須
+          strong.label.blue_label 任意
         td.arrow-box-cell
-          | 1日に設置場所を利用する人数
+          | 屋外平米数
         td.responsive-cell
          .input-container
-           = f.text_field :people, placeholder:"※通行人等不確定な人数は含めない"
-           br/
-           small ※（事務所）従業員総数・（建設）ヘルプ含めた総数・（サービス業）来客者＋スタッフ総数
+          = f.email_field :square_meter
+          |m2
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 自販機について
+          | 既に他社で見積りや図面を取得済みですか？
         td.responsive-cell
          .input-container
-          = f.select(:chenge,[\
-            ["新規設置","新規設置"],\
-            ["交換","交換"],\
-            ["追加","追加"],\
-           ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label.label-blue ある場合必須
-        td.arrow-box-cell
-          | （交換）設置中のメーカー
-        td.responsive-cell
-         .input-container
-          = f.text_field :change_before
-      /tr
-        td
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | （交換・追加）売上本数の明細を頂くことは可能ですか？
-        td
-          = f.select(:chagnge_remarks,[\
-            ["すぐに準備可能","すぐに準備可能"],\
-            ["メーカーに取り寄せ依頼可能","メーカーに取り寄せ依頼可能"],\
-            ["取り寄せ不可","取り寄せ不可"],\
-           ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 設置目的
-        td.responsive-cell
-         .input-container
-          = f.select(:aim,[\
-            ["副収入目的","副収入目的"],\
-            ["福利厚生や周辺の方のサービス","福利厚生や周辺の方のサービス"],\
-            ["どちらも希望","どちらも希望"],\
+          = f.select(:bring,[\
+            ["はい","はい"],\
+            ["いいえ","いいえ"],\
             ["未定","未定"],\
            ],include_blank: "選択してください")
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 設置希望時期
+          | 施工決定における重要点を教えてください。
+        td.responsive-cell
+         .input-container
+          = f.select(:importance,[\
+            ["最安値重視","最安値重視"],\
+            ["丁寧な対応","丁寧な対応"],\
+            ["スピーディーな対応","スピーディーな対応"],\
+            ["実績のある業者","実績のある業者"],\
+            ["保証・アフターフォロー","保証・アフターフォロー"],\
+            ["未定","未定"],\
+           ],include_blank: "選択してください")
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 希望施工予定月
+        td.responsive-cell
+          .input-container
+            = f.select :schedule, (0..11).map { |i| [(Date.today >> i).strftime('%Y年%m月'), (Date.today >> i).strftime('%Y-%m')] }, { include_blank: '選択してください' }, class: 'form-control'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | いつまでに業者を決定したいですか？
         td.responsive-cell
          .input-container
           = f.select(:period,[\
@@ -326,63 +118,7 @@
           | 要望・備考
         td.responsive-cell
          .input-container
-          = f.text_area :remarks, placeholder:"※周辺に高校がある・駅が近い等、周辺状況等明記・その他要望等"
-          br/
-          small 既存自販機交換の場合、メーカー・売上本数（おおよそでも可）・交換理由を記載してください。
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 自販機メーカー設置ができない場合、自販機自体の購入や貸出も検討しますか？
-        td.responsive-cell
-          .input-container
-           = f.label :assumed_number_yes do
-             = f.radio_button :attracting, 'yes'
-             | はい
-           = f.label :assumed_number_no do
-             = f.radio_button :attracting, 'no'
-             | いいえ
-      -if admin_signed_in?
-       tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 社内メモ
-        td.responsive-cell
-         .input-container
-          = f.text_area :word
-       tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 平均販売価格
-        td.responsive-cell
-         .input-container
-          = f.text_field :sales_price
-       tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 先方パーセンテージ
-        td.responsive-cell
-         .input-container
-          = f.text_field :percentage_other
-       tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 弊社パーセンテージ
-        td.responsive-cell
-         .input-container
-          = f.text_field :percentage_i
-       tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 想定本数
-        td.responsive-cell
-         .input-container
-          = f.text_field :assumed_number
+          = f.text_area :remarks, placeholder:"※施工に関する要望等"
       tr
         td colspan="3"
          .center

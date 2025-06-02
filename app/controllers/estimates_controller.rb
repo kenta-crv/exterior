@@ -40,10 +40,6 @@ class EstimatesController < ApplicationController
     @estimates = Estimate.joins(:comment).where.not(sales_price: nil).where("comments.cocacola = ? OR comments.asahi = ? OR comments.itoen = ? OR comments.dydo = ? OR comments.yamakyu = ? OR comments.neos = ?", "契約", "契約", "契約", "契約", "契約", "契約")
   end
 
-  def neos
-    @estimates = Estimate.joins(:comment).where.not(percentage_other: 0).where("comments.neos": "契約")
-  end
-
   def create
     @estimate = Estimate.new(estimate_params)
     @estimate.save
@@ -96,24 +92,6 @@ class EstimatesController < ApplicationController
       render 'edit'
     end
   end
-
-  #def share_email 終了
-   # estimate = Estimate.find(params[:estimate_id])
-   # EstimateMailer.share_email(estimate).deliver_now
-   # redirect_to estimate_path(estimate), notice: 'Email sent successfully.'
-  #end
-
-  #def outside_email 終了
-   # estimate = Estimate.find(params[:estimate_id])
-   # EstimateMailer.outside_email(estimate).deliver_now
-   # redirect_to estimate_path(estimate), notice: 'Email sent successfully.'
-  #end
-
-  #def old_email　終了
-   # estimate = Estimate.find(params[:id])
-    #EstimateMailer.old_email(estimate).deliver_now
-    #redirect_to estimate_path(estimate), notice: 'Email sent successfully.'
-  #end
 
   def send_mail
     @estimate = Estimate.find(params[:id])
@@ -216,19 +194,9 @@ class EstimatesController < ApplicationController
     @estimates = Estimate.order(created_at: "DESC").where(send_mail_flag: "送信済").page(params[:page])
   end
 
-  def share
-    @q = Estimate.joins(:progresses).where(progresses: { document: "シェアサイクル" }).ransack(params[:q])
-    @estimates_for_view = @q.result.page(params[:page]).per(100).order(created_at: :desc)
-  end
-
   def manufacturer
     @q = Estimate.with_specific_comments.ransack(params[:q])
     @estimates_for_view = @q.result(distinct: true).page(params[:page]).per(100).order(created_at: :desc)
-  end
-
-  def sfa
-    @q = Estimate.joins(:comment).where("comments.net": ["未提案","提案中","検討中"]).ransack(params[:q])
-    @estimates_for_view = @q.result.page(params[:page]).per(100).order(created_at: :desc)
   end
 
   def info
@@ -247,26 +215,15 @@ class EstimatesController < ApplicationController
       :name,  #名前
       :tel, #電話番号
       :postnumber, #郵便番号
-      :address, #住所
-      :email,
-      :vender,
-      :other,
-      :installation, #設置箇所
-      :people, #屋内の場合、使用が想定される人数
-      :chenge, #自販機交換か
-      :change_before, #交換前自販機
-      :period, #設置希望時期
+      :address, #施工先住所
+      :email, #メールアドレス
+      :which_one, #新築or改築
+      :square_meter, #平米
+      :schedule, #施工予定月
+      :bring, #既に他社で見積もりや図面を取得しているか？
+      :importance, #施工決定における重要点
+      :period, #いつまでに決めたいか
       :remarks, #要望
-      :word, #社内情報
-      :percentage_i, #パーセンテージ
-      :percentage_other, #パーセンテージ
-      :assumed_number, #想定本数
-      :sales_price, #販売価格
-      :assumed_total,
-      :aim, #目的
-      :attracting, #集客
-      :chagnge_remarks, #交換詳細
-      :industry, #業種
     )
   end
 end

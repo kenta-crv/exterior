@@ -68,6 +68,10 @@ Rails.application.routes.draw do
        post :update_status
      end
     end
+    collection do
+      post :confirm
+      post :thanks
+    end
     member do
       post :send_mail_cfsl
       post :send_mail
@@ -75,13 +79,10 @@ Rails.application.routes.draw do
       get :confirm_point
       post 'old_email', to: 'estimates#old_email', as: 'old_email'
       post 'outside_email', to: 'estimates#outside_email', as: 'outside_email'
-      post 'share_email', to: 'estimates#share_email', as: 'share_email'
     end
   end
   get 'contract' => 'estimates#contract'
   get 'purchase' => 'estimates#purchase'
-  get 'sfa' => 'estimates#sfa'
-  get 'share' => 'estimates#share'
   get 'manufacturer' => 'estimates#manufacturer'
   post 'estimates/client_select', to: 'estimates#client_select', as: 'client_select_estimate'
   get 'estimates/:id/accept', to: 'estimates#accept', as: 'accept_estimate'

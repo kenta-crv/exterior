@@ -15,6 +15,7 @@ class CreateContracts < ActiveRecord::Migration[5.2]
       t.string :president_name #代表取締役
       t.string :agree #契約同意
       t.string :contract_date #契約日
+      t.references :contract, foreign_key: true
       t.timestamps
     end
   end

@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "add_column_to_comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -34,7 +29,6 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -145,54 +139,8 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.string "otsuka"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "suntory"
-    t.string "yamakyu"
-    t.string "neos"
-    t.string "body"
-    t.string "net"
-    t.string "asahi_suggestion"
-    t.string "asahi_remarks"
-    t.string "cocacola_suggestion"
-    t.string "cocacola_remarks"
-    t.string "itoen_suggestion"
-    t.string "itoen_remarks"
-    t.string "neos_suggestion"
-    t.string "neos_remarks"
-    t.string "yamakyu_suggestion"
-    t.string "yamakyu_remarks"
-    t.string "dydo_suggestion"
-    t.string "dydo_remarks"
-    t.string "token"
     t.integer "client_id"
-    t.string "asahi_file"
-    t.string "cocacola_file"
-    t.string "itoen_file"
-    t.string "neos_file"
-    t.string "yamakyu_file"
-    t.string "dydo_file"
-    t.date "inspection_start_date"
     t.index ["estimate_id"], name: "index_comments_on_estimate_id"
-    t.index ["token"], name: "index_comments_on_token", unique: true
-  end
-
-  create_table "companies", force: :cascade do |t|
-    t.string "company"
-    t.string "name"
-    t.string "tel"
-    t.string "address"
-    t.string "mail"
-    t.string "remarks"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "client_id"
-    t.index ["client_id"], name: "index_companies_on_client_id"
-    t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -208,53 +156,32 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.string "president_name"
     t.string "agree"
     t.string "contract_date"
+    t.integer "contract_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "disclosure_logs", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "estimate_id"
-    t.string "action"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_disclosure_logs_on_client_id"
-    t.index ["estimate_id"], name: "index_disclosure_logs_on_estimate_id"
+    t.index ["contract_id"], name: "index_contracts_on_contract_id"
   end
 
   create_table "estimates", force: :cascade do |t|
     t.string "co"
     t.string "name"
     t.string "tel"
-    t.string "email"
     t.string "postnumber"
     t.string "address"
-    t.string "installation"
-    t.string "people"
-    t.string "chenge"
-    t.string "change_before"
+    t.string "email"
+    t.string "which_one"
+    t.string "square_meter"
+    t.string "schedule"
+    t.string "bring"
     t.string "importance"
     t.string "period"
     t.string "remarks"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.boolean "send_mail_flag"
-    t.string "vender"
-    t.string "other"
-    t.string "word"
-    t.string "percentage_i"
-    t.string "percentage_other"
-    t.string "assumed_number"
-    t.string "sales_price"
-    t.string "assumed_total"
-    t.string "aim"
-    t.string "attracting"
-    t.string "chagnge_remarks"
-    t.string "industry"
+    t.boolean "send_mail_flag", default: false
     t.boolean "disclosed"
     t.boolean "accepted_by_client"
-    t.integer "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -276,68 +203,16 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.integer "estimate_id"
-    t.string "year"
-    t.string "month"
-    t.string "sales"
-    t.boolean "complete", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["estimate_id"], name: "index_payments_on_estimate_id"
-  end
-
   create_table "progresses", force: :cascade do |t|
     t.integer "estimate_id"
     t.string "status"
     t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "admin_id"
     t.string "document"
     t.date "next"
-    t.integer "purchase_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["estimate_id"], name: "index_progresses_on_estimate_id"
-    t.index ["purchase_id"], name: "index_progresses_on_purchase_id"
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.string "co"
-    t.string "name"
-    t.string "tel"
-    t.string "address"
-    t.string "email"
-    t.string "vender"
-    t.string "installment"
-    t.string "option"
-    t.string "period"
-    t.string "remarks"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "simpel_wrapping"
-    t.string "thousand"
-    t.string "five_hundred"
-    t.string "five_ensure"
-    t.string "simple_wrapping"
-    t.string "design_wrapping"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "whats"
-    t.string "category"
-    t.string "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.integer "purchase_id"
-    t.string "status"
-    t.datetime "next"
-    t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["purchase_id"], name: "index_reports_on_purchase_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -347,19 +222,6 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "transfers", force: :cascade do |t|
-    t.integer "estimate_id"
-    t.string "bank"
-    t.string "branch"
-    t.string "number"
-    t.string "name"
-    t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "document"
-    t.index ["estimate_id"], name: "index_transfers_on_estimate_id"
   end
 
 end
