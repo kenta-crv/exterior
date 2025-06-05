@@ -9,50 +9,55 @@ br/
     = devise_error_messages!
     table.company
      colgroup
-      col width="10%"
-      col width="20%"
-      col width="70%"
+
       tbody
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | 会社名
-        td = f.text_field :company
+        td.responsive-cell
+         .input-container
+          = f.text_field :company
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | 代表者名（フルネーム）
-        td
+        td.responsive-cell
+         .input-container
           = f.text_field :representative_name
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | 代表者名（カナ）
-        td
+        td.responsive-cell
+         .input-container
           = f.text_field :representative_kana
       tr
-        td
+        td.label-cell
           strong.label.label-blue 代表者と同一なら不要
-        td.arrow_box
+        td.arrow-box-cell
           | 担当者名（フルネーム）
-        td
+        td.responsive-cell
+         .input-container
           = f.text_field :contact_name
       tr
-        td
+        td.label-cell
           strong.label.label-blue 代表者と同一なら不要
-        td.arrow_box
+        td.arrow-box-cell
           | 担当者名（カナ）
-        td
+        td.responsive-cell
+         .input-container
           = f.text_field :contact_kana
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | 携帯番号
-        td
+        td.responsive-cell
+         .input-container
           = f.text_field :tel
       tr
         td.label-cell
@@ -79,18 +84,20 @@ br/
          .input-container
           = f.text_field :area, placeholder:"東京都・神奈川県・埼玉県南部"
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | ログインアドレス
-        td
+        td.responsive-cell
+         .input-container
           = f.email_field :email, autocomplete: "email"
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | パスワード
-        td
+        td.responsive-cell
+         .input-container
           - if @minimum_password_length
             em
               | (
@@ -98,11 +105,12 @@ br/
               |  characters minimum)
           = f.password_field :password, autocomplete: "off"
       tr
-        td
+        td.label-cell
           strong.label 必須
-        td.arrow_box
+        td.arrow-box-cell
           | パスワード
-        td
+        td.responsive-cell
+         .input-container
           = f.password_field :password_confirmation, autocomplete: "off"
 
 
@@ -110,9 +118,6 @@ br/
       | ヒアリングフォーム
     table.company 
       colgroup
-       col width="10%"
-       col width="70%"
-       col width="20%"
       tr
         td.label-cell
           strong.label 必須
