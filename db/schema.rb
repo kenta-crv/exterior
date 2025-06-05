@@ -47,13 +47,26 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "company"
-    t.string "name"
+    t.string "representative_name"
+    t.string "representative_kana"
+    t.string "contact_name"
+    t.string "contact_kana"
     t.string "tel"
+    t.string "address"
+    t.string "url"
+    t.string "area"
+    t.string "question_area"
+    t.string "question_price"
+    t.string "question_tax"
+    t.string "question_responce"
+    t.string "question_contract"
+    t.string "question_picture"
+    t.text "question_appeal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "disclosure_clicked_at"
     t.integer "contract_id"
     t.index ["contract_id"], name: "index_clients_on_contract_id"
@@ -156,10 +169,10 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.string "president_name"
     t.string "agree"
     t.string "contract_date"
-    t.integer "contract_id"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contract_id"], name: "index_contracts_on_contract_id"
+    t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 
   create_table "estimates", force: :cascade do |t|

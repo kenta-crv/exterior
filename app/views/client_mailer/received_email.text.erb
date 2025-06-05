@@ -1,0 +1,23 @@
+『エクステリアガーデン』加盟店申請がありました。
+
+--------------------------
+会社名: <%= @client.company %>
+代表者名（フルネーム）: <%= @client.representative_name %>
+代表者名（カナ）: <%= @client.representative_kana %>
+担当者名（フルネーム）: <%= @client.contact_name.presence || '－' %>
+担当者名（カナ）: <%= @client.contact_kana.presence || '－' %>
+携帯番号: <%= @client.tel %>
+所在地: <%= @client.address %>
+会社URL: <%= @client.url.presence  %>
+対応可能エリア: <%= @client.area %>
+メールアドレス: <%= @client.email %>
+
+ヒアリング（エリアカバー問題なし？）: <%= ['はい', 'いいえ'].include?(@client.question_area) ? @client.question_area : '－' %>
+ヒアリング（低価格提案可能？）: <%= ['はい', 'いいえ'].include?(@client.question_price) ? @client.question_price : '－' %>
+ヒアリング（後払い決済同意）: <%= @client.question_tax == '問題ありません' ? '同意する' : (@client.question_tax.present? ? '未同意' : '－') %>
+ヒアリング（迅速対応可能？）: <%= @client.question_responce == '問題ありません' ? '同意する' : (@client.question_responce.present? ? '未同意' : '－') %>
+ヒアリング（契約書送付問題なし？）: <%= @client.question_contract == '問題ありません' ? '同意する' : (@client.question_contract.present? ? '未同意' : '－') %>
+ヒアリング（画像提供可能？）: <%= ['はい', 'いいえ'].include?(@client.question_picture) ? @client.question_picture : '－' %>
+
+企業の強み: <%= @client.question_appeal.presence || '－' %>
+--------------------------

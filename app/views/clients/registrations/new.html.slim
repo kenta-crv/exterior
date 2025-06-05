@@ -1,10 +1,10 @@
 br
 br
+br/
+br/
 .top-wrapper.center
   h2.headline
-      | メーカー新規登録
-  p
-    | 登録するID/PASSを入力して下さい。
+      | 加盟店申込フォーム
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     table.company
@@ -23,9 +23,30 @@ br
         td
           strong.label 必須
         td.arrow_box
-          | 担当者名
+          | 代表者名（フルネーム）
         td
-          = f.text_field :name
+          = f.text_field :representative_name
+      tr
+        td
+          strong.label 必須
+        td.arrow_box
+          | 代表者名（カナ）
+        td
+          = f.text_field :representative_kana
+      tr
+        td
+          strong.label.label-blue 代表者と同一なら不要
+        td.arrow_box
+          | 担当者名（フルネーム）
+        td
+          = f.text_field :contact_name
+      tr
+        td
+          strong.label.label-blue 代表者と同一なら不要
+        td.arrow_box
+          | 担当者名（カナ）
+        td
+          = f.text_field :contact_kana
       tr
         td
           strong.label 必須
@@ -34,12 +55,36 @@ br
         td
           = f.text_field :tel
       tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 所在地
+        td.responsive-cell
+         .input-container
+          = f.text_field :address, placeholder:"（例）東京都中央区銀座1-22-11 2F"
+      tr
+        td.label-cell
+          strong.label あれば必須
+        td.arrow-box-cell
+          | 会社URL
+        td.responsive-cell
+         .input-container
+          = f.text_field :url, placeholder:"https://abc.com/"
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 対応可能エリア（出来る限り広域に記載）
+        td.responsive-cell
+         .input-container
+          = f.text_field :area, placeholder:"東京都・神奈川県・埼玉県南部"
+      tr
         td
           strong.label 必須
         td.arrow_box
           | ログインアドレス
         td
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.email_field :email, autocomplete: "email"
       tr
         td
           strong.label 必須
@@ -59,8 +104,83 @@ br
           | パスワード
         td
           = f.password_field :password_confirmation, autocomplete: "off"
+
+
+    h2.headline
+      | ヒアリングフォーム
+    table.company 
+      colgroup
+       col width="10%"
+       col width="70%"
+       col width="20%"
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 加盟店としてご登録頂くにあたり、エリアにもよりますが、少なく１都道府県範囲分以上のエリアをカバー頂いております。（ex.神奈川西＋静岡東）問題ございませんか？
+        td.responsive-cell
+         .input-container
+          = f.radio_button :question_area, 'はい', id: 'question_price_yes'
+          = f.label :question_price_yes, 'はい'
+          = f.radio_button :question_area, 'いいえ', id: 'question_price_no'
+          = f.label :question_price_no, 'いいえ'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | インターネット申し込みユーザーの特性上、価格比較は多くのユーザー様の成約指標となる場合が多いです。案件にもよりますが、見積サイトの特性を理解し、低価格での見積提案に尽力を頂けますか？
+        td.responsive-cell
+         .input-container
+          = f.radio_button :question_price, 'はい', id: 'question_price_yes'
+          = f.label :question_price_yes, 'はい'
+          = f.radio_button :question_price, 'いいえ', id: 'question_price_no'
+          = f.label :question_price_no, 'いいえ'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 当社では成果報酬のお支払いを後払いにて対応させて頂きます。成果報酬が発生する場合、リスク回避の目的より後払い決済・クレジットカード・保証金入金のいずれかの手段にて決済を頂きますが、決済及び振り込み手数料は加盟店様負担となります。トラブル回避のため、ご同意頂く場合はチェックをつけてください。
+        td.responsive-cell
+         .input-container
+          = f.check_box :question_tax, {}, '問題ありません', nil
+          = f.label :question_tax, '問題ありません'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 見積サイトの特性上、ユーザー紹介よりレスポンスの速い企業様が成約を獲得しやすい傾向があります。可能な限り迅速なユーザー及び見積対応は可能ですか？
+        td.responsive-cell
+         .input-container
+          = f.check_box :question_responce, {}, '問題ありません', nil
+          = f.label :question_responce, '問題ありません'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 本審査完了後、普段ユーザーとお客様で締結を行っている契約書の雛形をお送り頂いております。問題ございませんか？
+        td.responsive-cell
+         .input-container
+          = f.check_box :question_contract, {}, '問題ありません', nil
+          = f.label :question_contract, '問題ありません'
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | ユーザー成約率重視の観点より、ご紹介企業様のアピール開示を当社より行う場合がございます。画像の提供は可能ですか？（ex.施工風景・施工者写真・完成後の写真等）
+        td.responsive-cell
+         .input-container
+          = f.radio_button :question_picture, 'はい', id: 'question_picture_yes'
+          = f.label :question_picture_yes, 'はい'
+          = f.radio_button :question_picture, 'いいえ', id: 'question_picture_no'
+          = f.label :question_picture_no, 'いいえ'
+    h2.headline
+      | 加盟店申込フォーム最後に企業様の強みを50文字以上で記載してください。（お客様及びサイト掲載用）
+    table.company
+      tr 
+        td.responsive-cell
+         .input-container
+          = f.text_area :question_appeal,  rows: 3
       tr
         td[colspan="3"]
-          = f.submit "登録", class:"btn btn-primary" 
-  .center
-    = render "clients/shared/links"
+          = f.submit "登録", class: "btn btn-success", data: { confirm: "送信してもよろしいですか？" }
+

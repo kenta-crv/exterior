@@ -4,11 +4,20 @@ Rails.application.routes.draw do
     registrations: 'clients/registrations',
     sessions: 'clients/sessions'
   }
-  resources :clients, only: [:show] do
+  resources :clients do
     member do
       post :disclose
+      post :send_mail
+      post :send_mail_start #開始日の送信
+      get "info" #案内
+      get "conclusion"
+      get 'register'  # GETリクエストに対応
+      post 'register' # POSTリクエストに対応
+      get "payment" 
+      get "start"
     end
   end
+
 
   #管理者アカウント
   devise_for :admins, controllers: {
@@ -41,24 +50,6 @@ Rails.application.routes.draw do
     end
   end
   resources :questions
-
-  resources :contracts do
-    resource :advances
-    collection do
-      post :confirm
-      post :thanks
-    end
-    member do
-      post :send_mail
-      post :send_mail_start #開始日の送信
-      get "info" #案内
-      get "conclusion"
-      get 'register'  # GETリクエストに対応
-      post 'register' # POSTリクエストに対応
-      get "payment" 
-      get "start"
-    end
-  end
 
   resources :estimates do
     resources :progresses

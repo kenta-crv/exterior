@@ -1,4 +1,4 @@
 class Contract < ApplicationRecord
     has_many :advances, dependent: :destroy
-    has_one :client
+    belongs_to :client
 end

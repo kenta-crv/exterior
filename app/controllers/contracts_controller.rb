@@ -1,35 +1,32 @@
 class ContractsController < ApplicationController
     before_action :authenticate_admin!, only: [:index, :destroy, :send_mail]
 
-    def index
-      @contracts = Contract.order(created_at: "DESC").page(params[:page])
-    end
-  
     def new
       @contract = Contract.new
+      @contract.client_id = params[:client_id]
+    end
+    
+    def create
+      @contract = Contract.new(contract_params)
+    
+      if @contract.save
+        # 管理者・一般ユーザーでメール送信を分ける
+        ContractMailer.received_email(@contract).deliver
+        ContractMailer.send_email(@contract).deliver unless admin_signed_in?
+    
+        # client.id が存在する場合（紐づけ済み）、そのマイページへ
+        if @contract.client
+          redirect_to client_path(@contract.client), notice: "企業登録が完了しました。審査完了後ご連絡致します。"
+        else
+          redirect_to root_path, notice: "企業登録が完了しました"
+        end
+      else
+        render :new
+      end
     end
   
     def confirm
       @contract = Contract.new(contract_params)
-    end
-  
-    def thanks
-      @contract = Contract.new(contract_params)
-      @contract.save
-      if admin_signed_in?
-        ContractMailer.received_email(@contract).deliver # 管理者に通知
-        flash[:notice] = "管理者送信のため、取引先にはメールを送らず完了しました。"
-      else
-        # 一般ユーザーの場合はメール送信を行う
-        ContractMailer.received_email(@contract).deliver # 管理者に通知
-        ContractMailer.send_email(@contract).deliver # 送信者に通知
-      end
-    end
-  
-    def create
-      @contract = Contract.new(contract_params)
-      @contract.save
-      redirect_to thanks_contracts_path
     end
   
     def show
@@ -141,10 +138,7 @@ end
       :agree, #契約同意
       :post_title, #代表取締役
       :contract_date, #契約日
+      :client_id
       )
-    end
-
-    def client_params
-      params.require(:client).permit(:email, :password, :password_confirmation)
     end
 end

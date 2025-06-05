@@ -7,9 +7,26 @@ class DeviseCreateClients < ActiveRecord::Migration[5.2]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
-      t.string :company
-      t.string :name
-      t.string :tel
+      t.string  :company                     # 会社名
+      t.string :representative_name
+      t.string :representative_kana
+      t.string :contact_name
+      t.string :contact_kana
+      t.string  :tel                         # 携帯番号
+      t.string  :address                     # 所在地
+      t.string  :url                         # 会社URL
+      t.string  :area                        # 対応可能エリア
+      
+      # ヒアリングフォーム
+      t.string  :question_area              # 「はい」「いいえ」 ラジオボタン
+      t.string  :question_price             # 「はい」「いいえ」 ラジオボタン
+      t.string  :question_tax               # 「問題ありません」 チェックボックス
+      t.string  :question_responce          # 「問題ありません」 チェックボックス
+      t.string  :question_contract          # 「問題ありません」 チェックボックス（または text にするなら変更）
+      t.string  :question_picture           # 「はい」「いいえ」 ラジオボタン
+      t.text    :question_appeal            # アピールテキスト（50文字以上）
+      
+      t.timestamps
 
       ## Recoverable
       t.string   :reset_password_token

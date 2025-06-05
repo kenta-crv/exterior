@@ -5,10 +5,21 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def create
+    @client = Client.new(sign_up_params)
+    if @client.save
+      ClientMailer.received_email(@client).deliver
+      ClientMailer.send_email(@client).deliver unless admin_signed_in?
+      redirect_to client_path(id: @client.id), notice: '登録が完了しました。担当者より内容を確認しLINEにてご連絡致します。'
+    else
+      render 'clients/registrations/new'
+    end
+  end
+
   protected
 
   def after_sign_up_path_for(resource)
-    "/clients/#{current_client.id}"
+    client_path(id: resource.id)  # ✅ ここでリダイレクトを制御
   end
 
   # アカウント更新後のリダイレクト先
@@ -18,10 +29,9 @@ class Clients::RegistrationsController < Devise::RegistrationsController
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:company, :name, :tel])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:company, :name, :tel])#追記
-  end
-  # GET /resource/sign_up
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal])
+  end  # GET /resource/sign_up
   # def new
   #   super
   # end

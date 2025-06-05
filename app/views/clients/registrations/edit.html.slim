@@ -1,49 +1,29 @@
 br
 br
+br/
+br/
 .top-wrapper.center
-  h2.headline
-      | メーカーログイン情報編集
-  p
-    | 登録するID/PASSを入力して下さい。
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = devise_error_messages!
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      div
-        | Currently waiting confirmation for:
-        = resource.unconfirmed_email
+  h2.headline 基本情報編集フォーム
+  = form_for(@client) do |f|
+    - if @client.errors.any?
+      #error_explanation
+        ul
+          - @client.errors.full_messages.each do |message|
+            li = message
+
     table.company
      colgroup
-      col width="10%"
-      col width="20%"
-      col width="70%"
-      tbody
+        col width="10%"
+        col width="20%"
+        col width="70%"
+     tbody
       tr
-        td
-          strong.label.label-blue 任意
-        td.arrow_box
-          | 会社名
-        td = f.text_field :company
-      tr
-        td
-          strong.label.label-blue 任意
-        td.arrow_box
-          | 担当者名
-        td
-          = f.text_field :name
-      tr
-        td
-          strong.label.label-blue 任意
-        td.arrow_box
-          | 携帯番号
-        td
-          = f.text_field :tel
-      tr
-        td
-          strong.label.label-blue 任意
-        td.arrow_box
-          | ログインアドレス
-        td
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          td
+            strong.label 必須
+          td.arrow_box
+            | ログインアドレス
+          td = f.email_field :email, autofocus: true, autocomplete: "email"
+
       tr
         td
           strong.label 必須
@@ -67,4 +47,4 @@ br
           = f.password_field :password_confirmation, autocomplete: "new-password"
       tr
         td[colspan="3"]
-          = f.submit "更新する", class:"btn btn-primary"
+          = f.submit "更新する", class:"btn btn-success"

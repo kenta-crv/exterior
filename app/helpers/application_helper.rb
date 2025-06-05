@@ -3,7 +3,7 @@ module ApplicationHelper
     {
       site: "",
       title:"<%= yield(:title) | 自販機ねっと' %>",
-      description: "自動販売機の一括比較見積もりなら『自販機ねっと』。条件の良い自販機会社を手軽に見積りできます。",
+      description: "外構・エクステリア工事の一括比較見積り『エクステリアガーデン』。",
       charset: "UTF-8",
       reverse: true,
       separator: '|',

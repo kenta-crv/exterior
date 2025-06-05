@@ -2,7 +2,9 @@ class Client < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :estimates
-  belongs_to :contract
+  has_one :contract, dependent: :destroy  # ✅ 1対1の関連
+  accepts_nested_attributes_for :contract # （※後述のネストフォームを使うなら）
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

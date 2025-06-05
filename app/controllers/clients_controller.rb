@@ -1,12 +1,12 @@
 class ClientsController < ApplicationController
-  before_action :check_client
+  #before_action :check_client
   def index
     @clients = Client.all
   end
 
   def show
     @client = Client.find(params[:id])
-    @estimates = current_client.estimates
+    #@estimates = current_client.estimates
   end
 
   def disclose
@@ -16,18 +16,9 @@ class ClientsController < ApplicationController
     redirect_to client_path(@client)
   end
 
-  def new
-    @client = Client.new
-  end
-
-  def create
-    @client = Client.new(client_params)
-    if @client.save
-      redirect_to @client, notice: 'クライアントが正常に作成されました。'
-    else
-      render :new
-    end
-  end
+  #def new
+   # @client = Client.new
+  #end
 
   def edit
     @client = Client.find(params[:id])
@@ -49,8 +40,26 @@ class ClientsController < ApplicationController
   end
 
   private
-
   def client_params
-    params.require(:client).permit(:company, :name, :tel, :email, :password, :password_confirmation)
+    params.require(:client).permit(
+      :company,                     # 会社名
+      :representative_name,
+      :representative_kana,
+      :contact_name,
+      :contact_kana,
+      :tel,                         # 携帯番号
+      :address,                     # 所在地
+      :url,                         # 会社URL
+      :area,                        # 対応可能エリア
+      
+      # ヒアリングフォーム
+      :question_area,              # 「はい」「いいえ」 ラジオボタン
+      :question_price,             # 「はい」「いいえ」 ラジオボタン
+      :question_tax,               # 「問題ありません」 チェックボックス
+      :question_responce,          # 「問題ありません」 チェックボックス
+      :question_contract,          # 「問題ありません」 チェックボックス（または text にするなら変更）
+      :question_picture,           # 「はい」「いいえ」 ラジオボタン
+      :question_appeal,            # アピールテキスト（50文字以上）
+      )
   end
 end
