@@ -1,11 +1,11 @@
 .tops-wrapper
  br/
- h2.headline 契約締結
  br
   .red.small
-   | ※契約ないようを必ずお読みの上、お進み下さい。
+   | ※契約内容を必ずお読みの上、お進み下さい。
+ h2.headline 契約締結
 .contract
-  .text #{@contract.company}（以下、「甲」という。）と、株式会社セールスプロ（以下、「乙」という。）は、甲が乙の提供する一括見積サイトエクステリアガーデン（https://exterior-garden.jp）のサービスの加盟店に参画し、次のとおり契約（以下、「本契約」という。）を締結する。
+  .text #{@client.company}（以下、「甲」という。）と、株式会社セールスプロ（以下、「乙」という。）は、甲が乙の提供する一括見積サイトエクステリアガーデン（https://exterior-garden.jp）のサービスの加盟店に参画し、次のとおり契約（以下、「本契約」という。）を締結する。
 
   h3.headline 第１条（目的）
   .text 本契約は甲乙相互間の信頼に基づく公正な取引関係を確立し、相互の利益と事業の発展をはかることを目的とする。
@@ -103,9 +103,9 @@
 
   h3.headline 契約名義
   .text 甲：
-  .text #{@contract.address}
-  .text #{@contract.company}
-  .text #{@contract.post_title}  #{@contract.president_name}
+  .text #{@client.address}
+  .text #{@client.company}
+  .text #{@client.post_title}  #{@client.representative_name}
   br/
   .text 乙：
   .text 東京都港区芝5-27-3 MBC・Aー9
@@ -114,7 +114,7 @@
 
   h2.headline 約款に同意する
   br
-  = form_with model: @contract, url: contract_path(@contract), local: true do |f|
+  = form_with model: @client, url: client_path(@client), local: true do |f|
     table.company.responsive-table
       colgroup
         col.col-1
@@ -130,7 +130,7 @@
             ])
         td.label-cell
           | 契約日：
-          = f.date_field :contract_date, value: @contract.contract_date || Date.today, class: 'input'
+          = f.date_field :contract_date, value: @client.contract_date || Date.today, class: 'input'
       
       tr
         td colspan="3"

@@ -18,46 +18,65 @@ br/
         col width="70%"
      tbody
       tr
-          td
+          td.label-cell
             strong.label 必須
-          td.arrow_box
+          td.arrow-box-cell
             | 会社名
-          td = f.text_field :company
-
+          td.responsive-cell
+            .input-container
+               = f.text_field :company
       tr
-          td
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 代表者役職
+        td.responsive-cell
+         .input-container
+          = f.text_field :post_title
+      tr
+          td.label-cell
             strong.label 必須
-          td.arrow_box
+          td.arrow-box-cell
             | 代表者名（フルネーム）
-          td = f.text_field :representative_name
+          td.responsive-cell
+            .input-container
+               = f.text_field :representative_name
 
       tr
-          td
+          td.label-cell
             strong.label 必須
-          td.arrow_box
+          td.arrow-box-cell
             | 代表者名（カナ）
-          td = f.text_field :representative_kana
+          td.responsive-cell
+            .input-container
+               = f.text_field :representative_kana
 
       tr
-          td
+          td.label-cell
             strong.label.label-blue 代表者と同一なら不要
-          td.arrow_box
+          td.arrow-box-cell
             | 担当者名（フルネーム）
-          td = f.text_field :contact_name
+          td.responsive-cell
+            .input-container
+               = f.text_field :contact_name
 
       tr
-          td
+          td.label-cell
             strong.label.label-blue 代表者と同一なら不要
-          td.arrow_box
+          td.arrow-box-cell
             | 担当者名（カナ）
-          td = f.text_field :contact_kana
+          td.responsive-cell
+            .input-container
+               = f.text_field :contact_kana
 
       tr
-          td
+          td.label-cell
             strong.label 必須
-          td.arrow_box
+          td.arrow-box-cell
             | 携帯番号
-          td = f.text_field :tel
+          td.responsive-cell
+            .input-container
+               = f.text_field :tel
 
       tr
           td.label-cell

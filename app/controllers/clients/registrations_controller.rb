@@ -29,8 +29,8 @@ class Clients::RegistrationsController < Devise::RegistrationsController
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal, :post_title, :agree, :contract_date])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:company, :name, :tel, :representative_name, :representative_kana, :contact_name, :contact_kana, :address, :url, :area, :email, :question_area, :question_price, :question_tax, :question_responce, :question_contract, :question_picture, :question_appeal, :post_title, :agree, :contract_date])
   end  # GET /resource/sign_up
   # def new
   #   super

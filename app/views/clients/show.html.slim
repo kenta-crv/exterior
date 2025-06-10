@@ -163,11 +163,46 @@ table.company
         = simple_format(@client.question_appeal)
 
 
-/.actions_container style="text-align: center; margin-bottom: 30px;"
-  = link_to "契約へ進む", info_client_path(@client), class: "btn btn-primary"
+h2.headline 契約情報（審査完了後にお進みください）
+table.company
+       tr
+        td
+          strong.label 必須
+        td
+          |役職
+        td
+          = @client.post_title
+       tr
+        td
+          strong.label 必須
+        td
+          |代表者名
+        td
+          = @client.representative_name
+       tr
+        td
+          strong.label 必須
+        td
+          |契約の同意
+        td
+          = @client.agree
+       tr
+        td
+          strong.client 必須
+        td
+          |契約日
+        td
+         - if @client.contract_date.present?
+           - contract_date = Date.parse(@client.contract_date)
+           = contract_date.strftime("%Y年%m月%d日")
+
+br/
+.actions_container style="text-align: center; margin-bottom: 30px;"
+  = link_to "契約の締結", conclusion_client_path(@client), class: "btn btn-success"
   - if admin_signed_in?
    = link_to "削除する", client_path(@client), class: "btn btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' }, style: "margin-left: 10px;"
    = link_to "一覧に戻る", clients_path, class: "btn btn-default"
+
 
 
 - if admin_signed_in?

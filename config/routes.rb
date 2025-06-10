@@ -9,12 +9,9 @@ Rails.application.routes.draw do
       post :disclose
       post :send_mail
       post :send_mail_start #開始日の送信
-      get "info" #案内
       get "conclusion"
       get 'register'  # GETリクエストに対応
       post 'register' # POSTリクエストに対応
-      get "payment" 
-      get "start"
     end
   end
 

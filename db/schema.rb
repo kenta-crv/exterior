@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_05_29_064504) do
+ActiveRecord::Schema.define(version: 2025_06_06_043718) do
 
   create_table "access_logs", force: :cascade do |t|
     t.string "source"
@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(version: 2025_05_29_064504) do
     t.datetime "remember_created_at"
     t.datetime "disclosure_clicked_at"
     t.integer "contract_id"
+    t.string "post_title"
+    t.string "agree"
+    t.date "contract_date"
     t.index ["contract_id"], name: "index_clients_on_contract_id"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
