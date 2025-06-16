@@ -193,8 +193,7 @@ table.company
           |契約日
         td
          - if @client.contract_date.present?
-           - contract_date = Date.parse(@client.contract_date)
-           = contract_date.strftime("%Y年%m月%d日")
+            = @client.contract_date.strftime("%Y年%m月%d日")
 
 br/
 .actions_container style="text-align: center; margin-bottom: 30px;"
