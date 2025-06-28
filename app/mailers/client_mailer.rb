@@ -17,7 +17,7 @@ class ClientMailer < ActionMailer::Base
     end
   end
 
-  def client_received_email(client)
+  def contract_received_email(client)
     @client = client
     mail to: "info@exterior-garden.jp"
     mail(subject: 'エクステリアガーデンで契約同意がありました') do |format|
@@ -25,7 +25,7 @@ class ClientMailer < ActionMailer::Base
     end
   end
 
-  def client_send_email(client)
+  def contract_send_email(client)
     @client = client
     mail to: client.email
     mail(subject: 'エクステリアガーデンの加盟店契約をいただきありがとうございます。') do |format|

@@ -1,4 +1,4 @@
-<%= @client.company%> <%= @client.name%>様
+<%= @client.company%>様
 
 お世話になっております。
 
@@ -8,26 +8,24 @@
 
 以下、案件公開致しますので、お手数では御座いますが、ご連絡のほどお願い致します。
 
-尚、調査結果についてはお手数では御座いますが、14日以内に回答下さいませ。
-
-提案を行う: <%= edit_estimate_comment_url(@estimate, @comment, client_id: @client.id) %>
+提案を行う: <%= edit_estimate_client_comment_url(@estimate, @client_comment, client_id: @client.id) %>
 
 辞退する: <%= decline_estimate_url(@estimate, client_id: @client.id) %>
 
 ご確認よろしくお願い致します。
 
 --------------------------
-会社名: <%= @estimate.co%>
-担当者名: <%= @estimate.name%>
-電話番号: <%= @estimate.tel%>
-メールアドレス: <%= @estimate.email%>
-住所: <%= @estimate.address%>
-設置箇所: <%= @estimate.installation%>
-人数: <%= @estimate.people %>
-自販機の用途: <%= @estimate.chenge %>
-交換前自販機: <%= @estimate.change_before %>
-設置時期: <%= @estimate.period %>
-要望:<%= @estimate.remarks %>
+お名前: <%= @estimate.name %>
+電話番号:  <%= @estimate.tel %>
+施工先住所: <%= @estimate.address %>
+メールアドレス: <%= @estimate.email %>
+施工内容: <%= @estimate.which_one %>
+屋外平米数: <%= @estimate.square_meter %>m2
+既に他社で見積りや図面を取得済みですか？: <%= @estimate.bring %>
+施工決定における重要点を教えてください。: <%= @estimate.importance %>
+希望施工予定月: <%= @estimate.schedule %>
+いつまでに業者を決定したいですか？: <%= @estimate.period %>
+要望・備考: <%= @estimate.remarks %>
 --------------------------
 
 一括見積サイト『エクステリアガーデン』

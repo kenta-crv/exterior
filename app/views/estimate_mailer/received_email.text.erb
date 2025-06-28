@@ -1,35 +1,16 @@
-自販機ねっとにお問い合わせがありました。
+エクステリアガーデンにお問い合わせがありました。
 
 --------------------------
-会社名: <%= @estimate.co%>
-担当者: <%= @estimate.name%>
-電話番号: <%= @estimate.tel%>
-設置先住所: <%= @estimate.address%>
-メールアドレス: <%= @estimate.email%>
-設置先業種: <%= @estimate.industry%>
-希望ベンダー: <%= @estimate.vender%>
-その他の自販機見積もりを希望しますか？: <%= @estimate.other%>
-設置箇所: <%= @estimate.installation%>
-想定される利用人数: <%= @estimate.people %>
-自販機について: <%= @estimate.chenge %>
-（交換・追加）設置中のメーカー: <%= @estimate.change_before %>
-（交換・追加）売上本数の明細を頂くことは可能ですか？: <%= @estimate.chagnge_remarks %>
-設置目的: <%= @estimate.aim %>
-設置希望時期: <%= @estimate.period %>
-要望・備考:<%= @estimate.remarks %>
-自販機の購入・貸出を検討しますか？: <%= @estimate.attracting == 'yes' ? 'はい' : 'いいえ' %>
+お名前: <%= @estimate.name %>
+電話番号: <%= @estimate.tel %>
+施工先住所: <%= @estimate.address %>
+メールアドレス: <%= @estimate.email %>
+施工内容: <%= @estimate.which_one %>
+屋外平米数: <%= @estimate.square_meter %>m2
+既に他社で見積りや図面を取得済みですか？: <%= @estimate.bring %>
+施工決定における重要点を教えてください。: <%= @estimate.importance %>
+希望施工予定月: <%= @estimate.schedule %>
+いつまでに業者を決定したいですか？: <%= @estimate.period %>
+要望・備考: <%= @estimate.remarks %>
 --------------------------
 
-
---------------------------
-会社名: <%= @estimate.co%>
-設置先住所: <%= @estimate.address%>
-設置先業種: <%= @estimate.industry%>
-設置箇所: <%= @estimate.installation%>
-想定される利用人数: <%= @estimate.people %>
-自販機について: <%= @estimate.chenge %>
-（交換・追加）設置中のメーカー: <%= @estimate.change_before %>
-（交換・追加）売上本数の明細を頂くことは可能ですか？: <%= @estimate.chagnge_remarks %>
-設置希望時期: <%= @estimate.period %>
-要望・備考:<%= @estimate.remarks %>
---------------------------

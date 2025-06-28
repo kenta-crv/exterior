@@ -44,13 +44,13 @@ class ClientsController < ApplicationController
       # conclusion.html.slimからの送信で、かつ同意が得られた場合
       if @client.agree == "同意しました"
           # メール送信処理
-          ClientMailer.client_received_email(@client).deliver_now
-          ClientMailer.client_send_email(@client).deliver_now
+          ClientMailer.contract_received_email(@client).deliver_now
+          ClientMailer.contract_send_email(@client).deliver_now
           flash[:notice] = "契約が完了しました"
-          redirect_to info_client_path(@client)
+          redirect_to client_path(@client)
         # edit.html.slimからの送信、またはconclusion.html.slimからの送信でも同意が得られなかった場合
       else
-        redirect_to info_client_path(@client)
+        redirect_to client_path(@client)
       end
     else
       # 更新が失敗した場合の処理
@@ -106,7 +106,17 @@ class ClientsController < ApplicationController
       :question_appeal,            # アピールテキスト（50文字以上）
       :post_title,
       :agree,
-      :contract_date
+      :contract_date,
+
+      :agree_1,
+      :agree_2,
+      :agree_3,
+      :agree_4,
+      :agree_5,
+      :agree_6,
+      :agree_7,
+      :agree_8,
+      :agree_9,
       )
   end
 end

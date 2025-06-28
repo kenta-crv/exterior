@@ -64,8 +64,6 @@ class EstimatesController < ApplicationController
   
     # 必要なインスタンス変数の設定
     @comment = @estimate.comment || Comment.new
-    @progress = Progress.new
-    @payment = Payment.new
   end
 
 
@@ -102,90 +100,77 @@ class EstimatesController < ApplicationController
 
   def send_mail_cfsl
     @estimate = Estimate.find(params[:id])
-    @comment = Comment.find_or_initialize_by(estimate_id: params[:id])
   
-    # クライアントIDを処理
-    params[:clients].each do |_key, client_ids|
-      client_ids.each do |client_id|
-        next if client_id.blank?
+    (params[:clients] || []).each do |client_id|
+      next if client_id.blank?
+      client = Client.find(client_id)
   
-        client = Client.find(client_id)
-
-        # メール送信
-        EstimateMailer.client_email_select(@estimate, client).deliver_now
+      # ClientComment を作成または取得
+      client_comment = ClientComment.find_or_initialize_by(estimate: @estimate, client: client)
+      client_comment.status = "依頼中"
+      client_comment.sent_date = Date.today
+      client_comment.save!
   
-        # コメントの更新
-        case client.company
-        when "アサヒ飲料株式会社 中部支社", "アサヒ飲料株式会社 関西支社", "アサヒ飲料株式会社"
-          @comment.update(asahi: "依頼中")
-        when "コカ･コーラボトラーズジャパン株式会社"
-          @comment.update(cocacola: "依頼中")
-        when "株式会社伊藤園"
-          @comment.update(itoen: "依頼中")
-        when "ダイドードリンコ株式会社"
-          @comment.update(dydo: "依頼中")
-        when "合同会社ファクトル"
-          @comment.update(yamakyu: "依頼中")
-        when "ネオス株式会社"
-          @comment.update(neos: "依頼中")
-        when "合同会社ファクトル"
-          @comment.update(body: "依頼中")
-        end
-      end
+      # メール送信（ClientComment を渡すように変更）
+      EstimateMailer.client_email_select(@estimate, client, client_comment).deliver_now
     end
+  
     redirect_to estimates_path, alert: "#{@estimate.co}が指定した企業へ送信しました。"
   end
-
+      
   def accept
     estimate = Estimate.find(params[:id])
     client = Client.find(params[:client_id])
+  
+    client_comment = ClientComment.find_or_initialize_by(estimate: estimate, client: client)
+    client_comment.status = "見積待"
+    client_comment.sent_date = Date.today
+    client_comment.save!
+  
+    # 必要なら旧 Comment モデルも更新
     comment = Comment.find_or_initialize_by(estimate_id: estimate.id)
-    # 現地調査開始日を更新
+    comment.net_info ||= {}
+    comment.net_info[client.id.to_s] ||= {
+      company: client.company,
+      email: client.email
+    }
+    comment.net_info[client.id.to_s]["status"] = "見積待"
+    comment.net_info[client.id.to_s]["inspection_start_date"] = Date.today
     comment.inspection_start_date = Date.today
-
-    case client.company
-    when "アサヒ飲料株式会社 中部支社", "アサヒ飲料株式会社 関西支社", "アサヒ飲料株式会社"
-      comment.update(asahi: "現地調査中")
-    when "コカ･コーラボトラーズジャパン株式会社"
-      comment.update(cocacola: "現地調査中")
-    when "株式会社伊藤園"
-      comment.update(itoen: "現地調査中")
-    when "ダイドードリンコ株式会社"
-      comment.update(dydo: "現地調査中")
-    when "合同会社ファクトル"
-      comment.update(yamakyu: "現地調査中")
-    when "ネオス株式会社"
-      comment.update(neos: "現地調査中")
-    when "合同会社ファクトル"
-      comment.update(body: "現地調査中")
-    end
-    EstimateMailer.client_public_email(estimate, client, comment).deliver_now
-    EstimateMailer.net_accept_email(estimate, client).deliver_now
+    comment.save
+  
+    # メーラーに必要な変数を全て渡す
+    EstimateMailer.client_public_email(estimate, client, client_comment).deliver_now
+    EstimateMailer.net_accept_email(estimate, client, client_comment).deliver_now
+  
     flash[:notice] = "案件詳細メールを送信しました。"
     redirect_to root_path
   end
-  
+    
   def decline
     estimate = Estimate.find(params[:id])
     client = Client.find(params[:client_id])
+  
+    # ClientComment を作成または取得して辞退ステータスを設定
+    client_comment = ClientComment.find_or_initialize_by(estimate: estimate, client: client)
+    client_comment.status = "辞退"
+    client_comment.sent_date = Date.today
+    client_comment.save!
+  
+    # （必要であれば）旧 Comment モデルの net_info を更新
     comment = Comment.find_or_initialize_by(estimate_id: estimate.id)
-    case client.company
-    when "アサヒ飲料株式会社 中部支社", "アサヒ飲料株式会社 関西支社", "アサヒ飲料株式会社"
-      comment.update(asahi: "設置NG")
-    when "コカ･コーラボトラーズジャパン株式会社"
-      comment.update(cocacola: "設置NG")
-    when "株式会社伊藤園"
-      comment.update(itoen: "設置NG")
-    when "ダイドードリンコ株式会社"
-      comment.update(dydo: "設置NG")
-    when "合同会社ファクトル"
-      comment.update(yamakyu: "設置NG")
-    when "ネオス株式会社"
-      comment.update(neos: "設置NG")
-    when "合同会社ファクトル"
-      comment.update(body: "設置NG")
-    end
-    EstimateMailer.net_decline_email(estimate, client).deliver_now
+    comment.net_info ||= {}
+    comment.net_info[client.id.to_s] ||= {
+      company: client.company,
+      email: client.email
+    }
+    comment.net_info[client.id.to_s]["status"] = "辞退"
+    comment.net_info[client.id.to_s]["inspection_start_date"] = Date.today
+    comment.save
+  
+    # メール送信時に client_comment を明示的に渡す
+    EstimateMailer.net_decline_email(estimate, client, client_comment).deliver_now
+  
     flash[:notice] = "案件を辞退しました。"
     redirect_to root_path
   end

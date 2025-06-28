@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   resources :questions
 
   resources :estimates do
+    resources :client_comments, only: [:edit, :update]
     resources :progresses
     resources :payments, except: [:index]
     resources :comments  do

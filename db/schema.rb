@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_06_06_043718) do
+ActiveRecord::Schema.define(version: 2025_06_26_081802) do
 
   create_table "access_logs", force: :cascade do |t|
     t.string "source"
@@ -19,6 +19,27 @@ ActiveRecord::Schema.define(version: 2025_06_06_043718) do
     t.datetime "accessed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "admins", force: :cascade do |t|
@@ -41,6 +62,19 @@ ActiveRecord::Schema.define(version: 2025_06_06_043718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contract_id"], name: "index_advances_on_contract_id"
+  end
+
+  create_table "client_comments", force: :cascade do |t|
+    t.integer "estimate_id"
+    t.integer "client_id"
+    t.string "status"
+    t.text "remarks"
+    t.date "sent_date"
+    t.date "inspection_start_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_client_comments_on_client_id"
+    t.index ["estimate_id"], name: "index_client_comments_on_estimate_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -72,6 +106,15 @@ ActiveRecord::Schema.define(version: 2025_06_06_043718) do
     t.string "post_title"
     t.string "agree"
     t.date "contract_date"
+    t.string "agree_1"
+    t.string "agree_2"
+    t.string "agree_3"
+    t.string "agree_4"
+    t.string "agree_5"
+    t.string "agree_6"
+    t.string "agree_7"
+    t.string "agree_8"
+    t.string "agree_9"
     t.index ["contract_id"], name: "index_clients_on_contract_id"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
@@ -156,6 +199,12 @@ ActiveRecord::Schema.define(version: 2025_06_06_043718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "client_id"
+    t.json "net_info"
+    t.date "inspection_start_date"
+    t.string "status"
+    t.string "status_info"
+    t.string "file"
+    t.string "remarks"
     t.index ["estimate_id"], name: "index_comments_on_estimate_id"
   end
 

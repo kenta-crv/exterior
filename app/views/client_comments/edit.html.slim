@@ -1,7 +1,8 @@
 br
 br
 br/
-= form_with model: [@estimate, @client_comment], local: true, html: { multipart: true } do |f|
+= form_for [@estimate, @client_comment] do |f| 
+  = hidden_field_tag :client_id, @client.id
   h2.headline 現地結果情報を入力してください
   table.company[width="100%"]
     tbody
@@ -13,7 +14,7 @@ br/
         td = f.file_field :file
       tr 
         th 提示内容・備考
-        td = f.text_area :neos_remarks
+        td = f.text_area :remarks
       tr
         th[colspan="2"]
           .center = f.submit "送信", class: "btn btn-success"

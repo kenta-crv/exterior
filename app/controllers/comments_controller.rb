@@ -16,12 +16,17 @@ class CommentsController < ApplicationController
 
   def edit
     @estimate = Estimate.find(params[:estimate_id])
+    @client_comment = ClientComment.find(params[:id])
     # adminユーザーであれば、@clientは設定しない
     if admin_signed_in?
       # admin用の処理（必要に応じて）
     else
-      # clientユーザーであれば、@clientを設定
-      @client = Client.find(params[:client_id])
+      # clientユーザーであれば、@clientを設定（params[:client_id]が無ければ @client_comment.client から取得）
+      @client = if params[:client_id].present?
+                  Client.find(params[:client_id])
+                else
+                  @client_comment.client
+                end
     end
   end
 
@@ -72,72 +77,64 @@ class CommentsController < ApplicationController
     when "presentation"
       update_comment_status(client.company, "見積提示中", comment)
     when "conflict"
-      update_comment_status(client.company, "見送りNG", comment)
+      update_comment_status(client.company, "提示NG", comment)
     end
   end
 
   private
 
-  def update_comment_status(company, status, comment)
-    case company
-    when "アサヒ飲料株式会社 中部支社", "アサヒ飲料株式会社 関西支社", "アサヒ飲料株式会社"
-      comment.update(asahi: status)
-    when "コカ･コーラボトラーズジャパン株式会社"
-      comment.update(cocacola: status)
-    when "株式会社伊藤園"
-      comment.update(itoen: status)
-    when "ダイドードリンコ株式会社"
-      comment.update(dydo: status)
-    when "合同会社ファクトル"
-      comment.update(yamakyu: status)
-    when "ネオス株式会社"
-      comment.update(neos: status)
-    when "合同会社ファクトル"
-      comment.update(body: status)
-    end
+  def update_comment_status(client, status, comment)
+    comment.net_info ||= {}
+  
+    client_id_str = client.id.to_s
+  
+    comment.net_info[client_id_str] ||= {
+      company: client.company,
+      email: client.email
+    }
+  
+    comment.net_info[client_id_str]["net"] = status
+    comment.save
   end
-
-    #削除
+  #削除
   def valid_status_change?(comment, new_status)
-    valid_statuses = ['見積提示', '設置NG']
+    valid_statuses = ['見積提示', '提示NG']
     valid_statuses.include?(new_status)
   end
-    #削除
+  #削除
   def send_status_update_email(comment)
     EstimateMailer.status_update_email(comment).deliver_now
   end
 
  	def comment_params
  		params.require(:comment).permit(
- 		:asahi,
-    :cocacola,
-    :dydo,
-    :itoen,
-    :kirin,
-    :otsuka,
-    :suntory,
-    :yamakyu,
-    :neos,
-    :net,
+ 		#:asahi,
+    #:cocacola,
+    #:dydo,
+    #:itoen,
+    #:kirin,
+    #:otsuka,
+    #:suntory,
+    #:yamakyu,
+    #:neos, #sute-t
+    :net, #ステータス
+    :net_info,
+    #:neos_suggestion,
     :body,
-    :asahi_suggestion,
-    :asahi_file,
-    :asahi_remarks,
-    :cocacola_suggestion,
-    :cocacola_file,
-    :cocacola_remarks,
-    :itoen_suggestion,
-    :itoen_file,
-    :itoen_remarks,
-    :neos_suggestion,
     :neos_file,
     :neos_remarks,
-    :yamakyu_suggestion,
-    :yamakyu_file,
-    :yamakyu_remarks,
-    :dydo_suggestion,
-    :dydo_file,
-    :dydo_remarks,
+    :inspection_start_date,
+    :status, 
+    :status_info, 
+    :file, 
+
+    :remarks, 
+    #:yamakyu_suggestion,
+    #:yamakyu_file,
+    #:yamakyu_remarks,
+    #:dydo_suggestion,
+    #:dydo_file,
+    #:dydo_remarks,
     )
  	end
 

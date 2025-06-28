@@ -14,7 +14,7 @@
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 担当者名
+          | お名前
         td.responsive-cell
           = f.hidden_field :name
           = @estimate.name
@@ -113,4 +113,4 @@
       tr
         td colspan="3"
          .center
-          = f.submit "送信", class: "btn btn-primary"
+          = f.submit "送信", class: "btn btn-success"

@@ -1,13 +1,20 @@
 - set_meta_tags noindex: true
 .tops-wrapper
-br
-  h2.headline  送信企業を選択してください。
-  .form-group
-    = form_tag "/estimates/#{params[:id]}/send_mail_cfsl", method: :post
-        .labeler
-          .row  
-            = collection_check_boxes :clients, :comp, @client.all, :id, :company do |user|
-              .col-sm-4
-                = user.label { user.check_box + user.text }
+  br
+  h2.headline 送信企業を選択してください。
 
-        button.btn.btn-success.center-block.submit[onclick="sent_mail()"] 送信する
+  = form_tag "/estimates/#{params[:id]}/send_mail_cfsl", method: :post
+    table.table.table-bordered
+      thead
+        tr
+          th 選択
+          th 会社名
+          th エリア
+      tbody
+        - @client.each do |client|
+          tr
+            td= check_box_tag "clients[]", client.id
+            td= client.company
+            td= client.area
+
+    button.btn.btn-success.center-block.submit[onclick="sent_mail()"] 送信する

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimate: one
+  client: one
+  status: MyString
+  remarks: MyText
+  sent_date: 2025-06-23
+  inspection_start_date: 2025-06-23
+
+two:
+  estimate: two
+  client: two
+  status: MyString
+  remarks: MyText
+  sent_date: 2025-06-23
+  inspection_start_date: 2025-06-23

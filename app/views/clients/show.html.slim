@@ -188,12 +188,77 @@ table.company
           = @client.agree
        tr
         td
-          strong.client 必須
+          strong.label 必須
         td
           |契約日
         td
          - if @client.contract_date.present?
             = @client.contract_date.strftime("%Y年%m月%d日")
+
+h2.headline 重要事項
+table.company.responsive-table
+  colgroup
+  col.col-1
+  col.col-2
+  col.col-3
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 一括見積サイトの特性上、見積依頼が入った際は即時対応が成約率に直結することを理解し、遅滞なく基本３営業日以内に見積の提示もしくは顧客への連絡を行う。
+    - if @client[:agree_1] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_1
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 与信審査の結果、決済会社の保証が得られない、もしくは取引金額に満たない場合、一括見積サイト『エクステリアガーデン』が契約の仲介に入り、3社間での契約を行います。その際、一度目の着金はエクステリアガーデンが受けるものとし、成果報酬を差し引いた金銭をお支払いします。
+    - if @client[:agree_2] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_2
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | お支払いは一度目の着金を受けた段階で成果報酬の総額をお支払いいただきます。分割での報酬払いは禁止となります。
+    - if @client[:agree_3] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_3
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 施工における一切のトラブルや責任をエクステリアガーデンは一切負わないものとし、施工会社が責任を持って対応を行います。
+    - if @client[:agree_4] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_4
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | ユーザーと契約後、施工金額が増額された場合、エクステリアガーデンの支払い額も変更になることを事前に理解し、隠蔽することなくその事実を速やかに開示します。
+    - if @client[:agree_5] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_5
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 本サービスをご利用いただくにあたり、決済代行利用手数料及び振込手数料はすべて施工会社が負担をします。
+    - if @client[:agree_6] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_6
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | その他、私はすべての条文を確認した上で本約款に同意し、約款に記載のある内容に対する一切のクレーム行為および迷惑行為は行わないことを誓います。
+    - if @client[:agree_7] == "同意しました" ? "同意しました" : "未同意"
+     td.label-cell
+      = @client.agree_7
+
+
 
 br/
 .actions_container style="text-align: center; margin-bottom: 30px;"
@@ -204,9 +269,9 @@ br/
 
 
 
-- if admin_signed_in?
- = form_for [@client, @client.advances.build] do |f|
-  table.company[width="100%"]
+/- if admin_signed_in?
+ /= form_for [@client, @client.advances.build] do |f|
+  /table.company[width="100%"]
     col[width="25%"]
     col[width="25%"]
     col[width="25%"]
@@ -219,7 +284,7 @@ br/
           th
             | コメント
 
-      tr
+      /tr
           td
             = f.select(:status, [\
             ["商談","商談"],\
@@ -232,13 +297,13 @@ br/
             = f.datetime_field :next
           td
             = f.text_area :body
-      tr
+      /tr
         th[colspan="3"]
          .center
           = f.submit "登録する", class:"btn btn-success"
- small 商談ステータスを入れる場合は商談日を入力。　不在の場合、ステータスは以前のステータスにし、不在にチェックを入れる
- table.company[width="100%"]
-  - if @client.advances.any?
+ /small 商談ステータスを入れる場合は商談日を入力。　不在の場合、ステータスは以前のステータスにし、不在にチェックを入れる
+ /table.company[width="100%"]
+  /- if @client.advances.any?
     tbody
      - @client.advances.each do |advance|
        tr

@@ -12,31 +12,7 @@ class EstimateMailer < ActionMailer::Base
   def send_email(estimate)
     @estimate = estimate
     mail to: estimate.email
-    mail(subject: '自販機現地調査開始のご案内') do |format|
-      format.text
-    end
-  end
-
-  def old_email(estimate)
-    @estimate = estimate
-    mail to: estimate.email
-    mail(subject: '最長5年保証で運営出来る新中古自販機のご案内') do |format|
-      format.text
-    end
-  end
-
-  def share_email(estimate)
-    @estimate = estimate
-    mail to: estimate.email
-    mail(subject: 'ドコモシェアサイクルで副収入と社会貢献！') do |format|
-      format.text
-    end
-  end
-
-  def outside_email(estimate)
-    @estimate = estimate
-    mail to: estimate.email
-    mail(subject: '収益性の高い貸出型自販機のご案内') do |format|
+    mail(subject: '現地調査・見積制作開始のご案内') do |format|
       format.text
     end
   end
@@ -44,17 +20,19 @@ class EstimateMailer < ActionMailer::Base
   def client_email(estimate,customer_id)
     @estimate = estimate
     mail bcc: Client.all.map{|client| client.email}
-    mail(subject: '自販機お見積もり依頼') do |format|
+    mail(subject: '現地調査・見積依頼のご依頼') do |format|
       format.text
     end
   end
 
-  def client_email_select(estimate, client)
+  def client_email_select(estimate, client, client_comment)
     @estimate = estimate
     @client = client
+    client_comment.save! 
+    @client_comment = client_comment
     @accept_link = accept_estimate_url(@estimate, client_id: @client.id)
     @decline_link = decline_estimate_url(@estimate, client_id: @client.id)
-    mail(to: client.email, subject: "自販機現地調査依頼【#{@estimate.co}】", content_type: "text/plain; charset=UTF-8", content_transfer_encoding: '7bit') 
+    mail(to: client.email, subject: "現地調査・見積依頼のご案内【#{@estimate.co}】", content_type: "text/plain; charset=UTF-8", content_transfer_encoding: '7bit') 
   end
 
   def status_update_email(comment)
@@ -62,23 +40,27 @@ class EstimateMailer < ActionMailer::Base
     mail(to: 'info@exterior-garden.jp', from: comment.client.email, subject: 'ステータス更新通知')
   end
 
-  def client_public_email(estimate, client, comment)
-    @estimate = estimate
-    @client = client
-    @comment = comment
-    mail(to: @client.email, subject: "#{client.company}の情報が公開されました。")
-  end
+# app/mailers/estimate_mailer.rb
+def client_public_email(estimate, client, client_comment)
+  @estimate = estimate
+  @client = client
+  @client_comment = client_comment
+  mail(to: @client.email, subject: "#{client.company}の情報が公開されました。")
+end
+
   
-  def net_accept_email(estimate, client)
+  def net_accept_email(estimate, client, client_comment)
     @estimate = estimate
     @client = client
+    @client_comment = client_comment
     mail(from: @client.email, to: 'info@exterior-garden.jp', subject: "#{client.company}が案件を受託しました。")
   end
 
-  def net_decline_email(estimate, client)
+  def net_decline_email(estimate, client, client_comment)
     @estimate = estimate
     @client = client
-    mail(from: @client.email, to: 'info@exterior-garden.jp', subject: "#{client.company}が案件を辞退しました")
+    @client_comment = client_comment  
+    mail(to: @client.email, subject: "#{client.company}の案件を辞退しました")
   end
 
   #催促
@@ -135,9 +117,7 @@ class EstimateMailer < ActionMailer::Base
     @comment = comment
     @estimate = comment.estimate
     @client = client
-    to = @client.email
-
-    mail(to: to, subject: "#{@client.company}より#{@estimate.co}の提案がありました。")
+    mail(to: "info@exterior-garden.jp", subject: "#{@client.company}より#{@estimate.co}の提案がありました。")
   end
 
   # ステータスが契約となった場合の通知メール送信
@@ -156,7 +136,6 @@ class EstimateMailer < ActionMailer::Base
     @estimate = comment.estimate
     @client = client
     to = @client.email
-
     mail(to: to, subject: "#{@estimate.co}様より見送りのお知らせ")
   end
 

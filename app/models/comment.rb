@@ -1,29 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :estimate
-  mount_uploader :asahi_file, ImagesUploader
-  mount_uploader :cocacola_file, ImagesUploader
-  mount_uploader :itoen_file, ImagesUploader
-  mount_uploader :yamakyu_file, ImagesUploader
-  mount_uploader :neos_file, ImagesUploader
-  mount_uploader :dydo_file, ImagesUploader
 
   # ステータス変更を検知するためのコールバック
-  after_save :send_email_notifications, if: :status_changed?
-
-  # ステータスとClient.companyのマッピング
-  STATUS_TO_CLIENT = {
-    'asahi' => [
-      'アサヒ飲料株式会社 中部支社', 
-      'アサヒ飲料株式会社 関西支社', 
-      'アサヒ飲料株式会社'
-    ],
-    'cocacola' => ['コカ･コーラボトラーズジャパン株式会社'],
-    'itoen' => ['株式会社伊藤園'],
-    'dydo' => ['ダイドードリンコ株式会社'],
-    'yamakyu' => ['合同会社ファクトル'],
-    'neos' => ['ネオス株式会社'],
-    'body' => ['合同会社ファクトル'],
-  }.freeze
+  #after_save :send_email_notifications, if: :status_changed?
 
   # 催促メール対象取得の取得(ステータス:依頼中)
   # 引数：days_ago(何日前のデータを取得するか)
@@ -70,9 +49,9 @@ class Comment < ApplicationRecord
 
   private
 
-  def status_changed?
-    cocacola_changed? || neos_changed? || itoen_changed? || asahi_changed? || dydo_changed? || yamakyu_changed? || body_changed?
-  end
+  #def status_changed?
+  #  cocacola_changed? || neos_changed? || itoen_changed? || asahi_changed? || dydo_changed? || yamakyu_changed? || body_changed?
+  #end
 
   def send_email_notifications
     client = estimate.client

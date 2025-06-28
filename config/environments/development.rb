@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = {host: "xn--new351c2sh.net"}
+  config.action_mailer.default_url_options = {host: "exterior-garden.jp"}
   config.action_mailer.raise_delivery_errors = true
 
   # ActionMailer::Base.delivery_method = :letter_opener_web
