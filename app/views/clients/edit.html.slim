@@ -4,7 +4,7 @@ br/
 br/
 .top-wrapper.center
   h2.headline 基本情報編集フォーム
-  = form_for(@client) do |f|
+  = form_with model: @client, local: true, html: { multipart: true } do |f|
     - if @client.errors.any?
       #error_explanation
         ul
@@ -104,9 +104,70 @@ br/
           td.responsive-cell
             .input-container
               = f.text_field :area, placeholder:"東京都・神奈川県・埼玉県南部"
+              
+    h2.headline 掲載情報
+    p 本写真についてはサイト上での掲載及び、ユーザー紹介時の加盟店企業紹介時にご使用致します。過去成約率を鑑みても、開示情報の多い企業様の成約率が高くなっておりますので、なるべく多くの掲載をお願い致します。
+    table.company
+     colgroup
+      col width="10%"
+      col width="20%"
+      col width="70%"
       tr
           td.label-cell
-            strong.label 必須
+            strong.label 
+          td.arrow-box-cell
+            | ロゴ
+          td.responsive-cell
+            .input-container
+              = f.file_field :logo
+      tr
+          td.label-cell
+            strong.label 
+          td.arrow-box-cell
+            | 顔写真や集合写真
+          td.responsive-cell
+            .input-container
+              = f.file_field :face
+      tr
+          td.label-cell
+            strong.label 
+          td.arrow-box-cell
+            | 施工事例①（Before/after）
+          td.responsive-cell
+            .input-container
+              = f.file_field :before_1
+              = f.file_field :after_1
+      tr
+          td.label-cell
+            strong.label 
+          td.arrow-box-cell
+            | 施工事例②（Before/after）
+          td.responsive-cell
+            .input-container
+              = f.file_field :before_2
+              = f.file_field :after_2
+      tr
+          td.label-cell
+            strong.label 
+          td.arrow-box-cell
+            | 施工事例③（Before/after）
+          td.responsive-cell
+            .input-container
+              = f.file_field :before_3
+              = f.file_field :after_3
+      tr
+          td.label-cell
+            strong.label 
+          td.arrow-box-cell
+            | その他（施工風景等なんでも可）
+          td.responsive-cell
+            .input-container
+              = f.file_field :other_1
+              = f.file_field :other_2
+              = f.file_field :other_3
+      tr
+          td.label-cell
+            strong.label 
           td.arrow-box-cell
             | 企業の強み
           td.responsive-cell

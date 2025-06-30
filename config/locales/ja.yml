@@ -1,30 +1,32 @@
 ja:
+  errors:
+    format: "%{message}"
+    messages:
+      blank: "%{attribute}を入力してください"
+      too_short: "%{attribute}は%{count}文字以上で入力してください"
+
   activerecord:
     models:
+      client: クライアント
       estimate: 企業
+      company: 会社名
+
     attributes:
+      client:
+        company: 会社名
+        post_title: 代表者役職
+        representative_name: 代表者名（フルネーム）
+        representative_kana: 代表者名（カナ）
+        contact_name: 担当者名（フルネーム）
+        contact_kana: 担当者名（カナ）
+        tel: 携帯番号
+        address: 所在地
+        url: 会社URL
+        area: 対応可能エリア
+        question_appeal: 企業の強み
+
       estimate:
         co: 会社名
-        name: 担当者様名
-        tel: 電話番号
-        email: メールアドレス
-        prefecture: 募集エリア
-        address: 住所
-        employment: 従業員数
-        business: 募集職種
-        people: 必要人数
-        recruitment: 必要人材
-        importance: 重要な点
-        period: 時期
-        remarks: その他希望
-        choice: 人材紹介・人材派遣会社を選択して下さい
-        user_name: ユーザー名を入力して下さい
-        user_password: パスワードを入力してください。
-  activerecord:
-    models:
-      company: 会社名
-    attributes:
-      estimate:
         company: 会社名
         name: 担当者様名
         tel: 電話番号

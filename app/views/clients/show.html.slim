@@ -155,9 +155,111 @@ table.company
       .input-container
         = @client.question_picture
 
-h2.headline 加盟店申込フォーム最後に企業様の強みを50文字以上で記載してください。（お客様及びサイト掲載用）
+h2.headline 企業アピール情報
 table.company
+  colgroup
+    col width="10%"
+    col width="20%"
+    col width="70%"
+
   tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | ロゴ
+    td.responsive-cell
+      - if @client.logo.present?
+        = image_tag @client.logo.url, alt: 'ロゴ画像', width: 100
+        br
+        = link_to '画像をダウンロード', @client.logo.url, download: '', class: 'download-button'
+
+  tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | 顔写真や集合写真
+    td.responsive-cell
+      - if @client.face.present?
+        = image_tag @client.face.url, alt: '顔写真や集合写真', width: 100
+        br
+        = link_to '画像をダウンロード', @client.face.url, download: '', class: 'download-button'
+
+  tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | 施工事例①（Before/after）
+    td.responsive-cell
+      - if @client.before_1.present?
+        = image_tag @client.before_1.url, alt: '施工前①', width: 100
+        br
+        = link_to 'Before画像をダウンロード', @client.before_1.url, download: '', class: 'download-button'
+        br
+      - if @client.after_1.present?
+        = image_tag @client.after_1.url, alt: '施工後①', width: 100
+        br
+        = link_to 'After画像をダウンロード', @client.after_1.url, download: '', class: 'download-button'
+
+  tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | 施工事例②（Before/after）
+    td.responsive-cell
+      - if @client.before_2.present?
+        = image_tag @client.before_2.url, alt: '施工前②', width: 100
+        br
+        = link_to 'Before画像をダウンロード', @client.before_2.url, download: '', class: 'download-button'
+        br
+      - if @client.after_2.present?
+        = image_tag @client.after_2.url, alt: '施工後②', width: 100
+        br
+        = link_to 'After画像をダウンロード', @client.after_2.url, download: '', class: 'download-button'
+
+  tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | 施工事例③（Before/after）
+    td.responsive-cell
+      - if @client.before_3.present?
+        = image_tag @client.before_3.url, alt: '施工前③', width: 100
+        br
+        = link_to 'Before画像をダウンロード', @client.before_3.url, download: '', class: 'download-button'
+        br
+      - if @client.after_3.present?
+        = image_tag @client.after_3.url, alt: '施工後③', width: 100
+        br
+        = link_to 'After画像をダウンロード', @client.after_3.url, download: '', class: 'download-button'
+
+  tr
+    td.label-cell
+      strong.label 
+    td.arrow-box-cell
+      | その他（施工風景等なんでも可）
+    td.responsive-cell
+      - if @client.other_1.present?
+        = image_tag @client.other_1.url, alt: 'その他①', width: 100
+        br
+        = link_to '画像①をダウンロード', @client.other_1.url, download: '', class: 'download-button'
+        br
+      - if @client.other_2.present?
+        = image_tag @client.other_2.url, alt: 'その他②', width: 100
+        br
+        = link_to '画像②をダウンロード', @client.other_2.url, download: '', class: 'download-button'
+        br
+      - if @client.other_3.present?
+        = image_tag @client.other_3.url, alt: 'その他③', width: 100
+        br
+        = link_to '画像③をダウンロード', @client.other_3.url, download: '', class: 'download-button'
+
+
+
+  tr
+    td.label-cell
+      strong.label
+    td.arrow-box-cell
+      | 企業の強み
     td.responsive-cell
       .input-container
         = simple_format(@client.question_appeal)

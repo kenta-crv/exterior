@@ -117,6 +117,17 @@ class ClientsController < ApplicationController
       :agree_7,
       :agree_8,
       :agree_9,
+
+      :face,
+      :logo,
+      :before_1,
+      :after_1,
+      :before_2,
+      :after_2,
+      :before_3,
+      :other_1,
+      :other_2,
+      :other_3,
       )
   end
 end
