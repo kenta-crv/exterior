@@ -156,12 +156,7 @@ table.company
         = @client.question_picture
 
 h2.headline 企業アピール情報
-table.company
-  colgroup
-    col width="10%"
-    col width="20%"
-    col width="70%"
-
+table.company style="width: 100%; table-layout: fixed;"
   tr
     td.label-cell
       strong.label 
@@ -261,41 +256,47 @@ table.company
     td.arrow-box-cell
       | 企業の強み
     td.responsive-cell
-      .input-container
-        = simple_format(@client.question_appeal)
+      .input-container style="word-break: break-word; overflow-wrap: break-word; white-space: normal; max-width: 100%;"
+         = simple_format(@client.question_appeal)
 
 
 h2.headline 契約情報（審査完了後にお進みください）
 table.company
-       tr
-        td
-          strong.label 必須
-        td
-          |役職
-        td
-          = @client.post_title
-       tr
-        td
-          strong.label 必須
-        td
-          |代表者名
-        td
-          = @client.representative_name
-       tr
-        td
-          strong.label 必須
-        td
-          |契約の同意
-        td
-          = @client.agree
-       tr
-        td
-          strong.label 必須
-        td
-          |契約日
-        td
-         - if @client.contract_date.present?
-            = @client.contract_date.strftime("%Y年%m月%d日")
+  colgroup
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 役職
+    td.responsive-cell
+      .input-container
+        = @client.post_title
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 代表者名
+    td.responsive-cell
+      .input-container
+        = @client.representative_name
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 契約の同意
+    td.responsive-cell
+      .input-container
+        = @client.agree
+  tr
+    td.label-cell
+      strong.label 必須
+    td.arrow-box-cell
+      | 契約日
+    td.responsive-cell
+      .input-container
+        - if @client.contract_date.present?
+          = @client.contract_date.strftime("%Y年%m月%d日")
+
 
 h2.headline 重要事項
 table.company.responsive-table
