@@ -1275,20 +1275,3 @@ table.right {margin:5px 50px 5px 0px;}
    }
  }
 
-
- table.company.company--appeal {
-  max-width: 800px; // ← 好きな幅に調整
-  width: 100%;
-  table-layout: auto;
-  word-break: break-word;
-}
-
-table.company.company--appeal td.responsive-cell {
-  word-break: break-word;
-}
-
-.logo-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
