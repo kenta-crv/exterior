@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   get 'question' => 'top#question'
   get 'documents' => 'top#documents'
+  get 'start' => 'top#start'
   get 'business' => 'top#business'
   get 'corporation' => 'top#corporation'  #会社概要
   get 'privacy' => 'top#privacy' #プライバシーポリシー

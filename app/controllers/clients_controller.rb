@@ -125,6 +125,7 @@ class ClientsController < ApplicationController
       :before_2,
       :after_2,
       :before_3,
+      :after_3,
       :other_1,
       :other_2,
       :other_3,

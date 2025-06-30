@@ -27,6 +27,22 @@ class TopController < ApplicationController
     end
   end
 
+  def start
+    AccessLog.create!(
+      path: request.path,
+      ip: request.remote_ip,
+      accessed_at: Time.current
+    )
+  
+    pdf_path = Rails.root.join('public', 'start.pdf')
+  
+    if File.exist?(pdf_path)
+      send_file pdf_path, filename: 'start.pdf', type: 'application/pdf', disposition: 'attachment'
+    else
+      render plain: 'ファイルが見つかりません', status: 404
+    end
+  end
+
   def price
   end
 
