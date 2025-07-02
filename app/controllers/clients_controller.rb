@@ -41,19 +41,19 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
   
     if @client.update(client_params)
-      # conclusion.html.slimからの送信で、かつ同意が得られた場合
       if @client.agree == "同意しました"
-          # メール送信処理
+        unless @client.contract_date.present?
+          # メール送信（1回だけ送信されるように制御）
           ClientMailer.contract_received_email(@client).deliver_now
           ClientMailer.contract_send_email(@client).deliver_now
-          flash[:notice] = "契約が完了しました"
-          redirect_to client_path(@client)
-        # edit.html.slimからの送信、またはconclusion.html.slimからの送信でも同意が得られなかった場合
+        end
+  
+        flash[:notice] = "契約が完了しました"
+        redirect_to client_path(@client)
       else
         redirect_to client_path(@client)
       end
     else
-      # 更新が失敗した場合の処理
       render :edit
     end
   end
