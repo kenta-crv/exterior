@@ -341,14 +341,23 @@ main {
   margin:0 auto;
 }
 .red-title {
-  text-align:center;
-  font-size:4.2vw;
-  margin:10px 0 20px;
-  color:red;
-  line-height:5.0vw;
-  font-weight:bold;
-  width:100%;
+  text-align: center;
+  font-size: 4.2vw;
+  margin: 10px 0 20px;
+  color: red;
+  line-height: 5.0vw;
+  font-weight: bold;
+  width: 100%;
 }
+
+/* スマホ専用：幅600px以下の場合に大きく表示 */
+@media (max-width: 600px) {
+  .red-title {
+    font-size: 8.0vw;
+    line-height: 10vw;
+  }
+}
+
 .push {
     text-align:center;
     font-size:6.0vw;
@@ -1219,35 +1228,48 @@ table.price {
 
 
 
-/*テーブル共通*/
+/* テーブル共通 */
 table.review {
   border: 1px solid #aaa;
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 6px;
   overflow: hidden;
-  .font-middle{font-size:1.7rem;}
-  .red{color:red;}
+
+  .font-middle { font-size: 1.7rem; }
+  .red { color: red; }
 
   th, td {
     background: #f4f4f4;
     padding: 10px;
-    line-height:3rem;
-    font-weight:bold;
+    line-height: 3rem;
+    font-weight: bold;
   }
-  .title{
-    background-color:$main_color;
+
+  .title {
+    background-color: $main_color;
     font-size: 1.5vw;
-    color:white;}
-  
+    color: white;
+  }
+
   td {
-     vertical-align: middle;
-     text-align: left;
-     overflow: visible;
-     position: relative;
-     color: #333;
-     font-size: 1.3vw;
-     }
+    vertical-align: middle;
+    text-align: left;
+    overflow: visible;
+    position: relative;
+    color: #333;
+    font-size: 1.3vw;
+  }
+
+  // スマホ画面（幅768px以下）のときはフォントサイズを大きくする
+  @media (max-width: 768px) {
+    .title {
+      font-size: 4vw;
+    }
+    td {
+      font-size: 3.5vw;
+    }
+  }
 }
 table.left {margin:5px 0px 5px 50px;}
 table.right {margin:5px 50px 5px 0px;}
@@ -1275,3 +1297,63 @@ table.right {margin:5px 50px 5px 0px;}
    }
  }
 
+
+ .block-image {
+  width: 100%;
+  display: inline-block; /* 親の text-align: center; に従う */
+  vertical-align: top;    /* pタグとの上下ズレ防止 */
+  margin: 10px auto;
+
+  @media only screen and (max-width: 599px) {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+.entire-image {
+  width: 65%;
+  display: block;         /* inline-block から block に変更して margin: auto が効くように */
+  margin: 10px auto;      /* 上下10px、左右自動で中央寄せ */
+  vertical-align: top;    /* pタグとの上下ズレ防止 */
+  max-width: 100%;        /* 横幅制限（画像がはみ出さないように） */
+
+  @media only screen and (max-width: 599px) {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+.border2 {
+  text-align: center;
+  margin: 0em 1.5em;
+  font-size: 1.5vw;
+  width: 100%;
+  font-weight: bold;
+  color: #fff; /* 文字色 */
+  background: $main_color;
+  border: solid 5px $main_color; /* 線 */
+  border-radius: 10px;
+  padding: 0em 0.2em;
+  box-sizing: border-box; /* パディングとボーダー込みで幅計算 */
+
+  @media only screen and (max-width: 599px) {
+    font-size: 4.5vw; /* スマホで文字大きすぎるのを防ぐ */
+    margin: 0.5em 1em; /* 左右のマージンを縮めて詰まり防止 */
+  }
+}
+
+.border2 p {
+  margin: 0;
+  padding: 0;
+}
+/* Bootstrapの影響を消すため重要度強め */
+.col-sm-4 {
+  float: none !important;      /* float解除 */
+  display: flex !important;    /* flex化 */
+  flex-direction: column;      /* 縦並び */
+  align-items: center !important; /* 中央寄せ */
+  justify-content: flex-start;
+  text-align: center !important;
+}

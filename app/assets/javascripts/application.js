@@ -13,17 +13,6 @@
 //= require rails-ujs
 //= require_tree .
 
-$(function() {
-    $('.navToggle').click(function() {
-        $(this).toggleClass('active');
-
-        if ($(this).hasClass('active')) {
-            $('.globalMenuSp').addClass('active');
-        } else {
-            $('.globalMenuSp').removeClass('active');
-        }
-    });
-});
 
 // jsを再読み込みさせたいページで使う（/companies/pay）
 $(document).on("turbolinks:load", function () {
