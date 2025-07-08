@@ -20,44 +20,167 @@
            | \ カンタン60秒入力! /
         =link_to '/estimates/new' do
          =image_tag 'click3.webp', width: '100%', class: 'center'
-        
+
 .row
    .col-sm-12.center
      h2.push
       span
-       | 外構工事業者を無料見積！
+       | 外構工事に比較見積は必須！
        br
        br
-       | 最安値の業者を気軽に見つけよう！
+       | まずは実際の施工事例の確認
 br/
 br/
+.row
+  .col-sm-6
+    table.review
+      col[width="35%"]
+      col[width="65%"]
+      tbody
+        tr
+          th.title[colspan="2"]
+            .center 茨城県（200平米）
+        tr
+          th
+            = image_tag "pixta.webp", width: "100%"
+          td
+            .info-row
+              .dark-red.center
+               span.unit 削減率：
+              .dark-red.center
+               span.digit 18
+               span.unit %
+              .dark-red.center.before
+               span.unit 264万円
+              .dark-red.center
+               span.digit 216
+               span.unit 万円
 
+  .col-sm-6
+    table.review
+      col[width="35%"]
+      col[width="65%"]
+      tbody
+        tr
+          th.title[colspan="2"]
+            .center 兵庫県（250平米）
+        tr
+          th
+            = image_tag "pixta.webp", width: "100%"
+          td
+            .info-row
+              .dark-red.center
+               span.unit 削減率：
+              .dark-red.center
+               span.digit 20
+               span.unit %
+              .dark-red.center.before
+               span.unit 330万円
+              .dark-red.center
+               span.digit 264
+               span.unit 万円
+
+.row
+  .col-sm-6
+    table.review
+      col[width="35%"]
+      col[width="65%"]
+      tbody
+        tr
+          th.title[colspan="2"]
+            .center 岐阜県（220平米）
+        tr
+          th
+            = image_tag "pixta.webp", width: "100%"
+          td
+            .info-row
+              .dark-red.center
+               span.unit 削減率：
+              .dark-red.center
+               span.digit 24
+               span.unit %
+              .dark-red.center.before
+               span.unit 275万円
+              .dark-red.center
+               span.digit 209
+               span.unit 万円
+
+  .col-sm-6
+    table.review
+      col[width="35%"]
+      col[width="65%"]
+      tbody
+        tr
+          th.title[colspan="2"]
+            .center 群馬県（300平米）
+        tr
+          th
+            = image_tag "pixta.webp", width: "100%"
+          td
+            .info-row
+              .dark-red.center
+               span.unit 削減率：
+              .dark-red.center
+               span.digit 21.7
+               span.unit %
+              .dark-red.center.before
+               span.unit 396万円
+              .dark-red.center
+               span.digit 310
+               span.unit 万円
+
+br
+hr.line
+br
+.row
+   .col-sm-12.center
+     h2.push
+      span
+       | 見積により平均削減率12.5%??
+       br
+       br
+       | 安くなるのには理由がある
+br
+hr.line
+br
 .row#anchor
    .col-sm-12.center
      h2.surprise
-        | エクステリアガーデンとは？
+        | ハウスメーカー見積は高い理由がある
 
 .top-wrapper
  br
- p.center  『エクステリアガーデン』は、外構工事・エクステリア工事を検討するユーザーにご利用いただくことができる一括比較見積サービスです。一生を左右する外構・エクステリアは、インターネット情報や口コミを確認できる環境がなく、安易に選んでしまうと後々後悔したり、高額な料金請求をされることもあります。『エクステリアガーデン』では、そんな外構工事・エクステリア工事業者の優良企業をご紹介し、最安値で信頼できる業者選びをサポートします。
- br/
+ p.center 基本的に新築の場合、内装を専門とするハウスメーカーが外構エクステリアを複数の協力会社に委託する仕組みにより成り立っています。そこには協力業者も介入するため多くの費用がそもそも上乗せされています。
  br/
 .row.center
    .col-sm-12
-     =image_tag 'whats.webp', class: 'center entire-image'
+     =image_tag 'front1.webp', class: 'center entire-image'
 
 .row#anchor
    .col-sm-12.center
      h2.surprise
-        | こんな方におすすめ
-br/
+        | 外構工事は相場がないから高い
+
 .top-wrapper
- p.center 外構工事の一括比較見積サービス『エクステリアガーデン』は、以下のような方にご利用いただきたいサービスとなります。
- br/
+ br
+ p.center 前提として、外構を含む工事業界には明確な費用が存在せず、基本的には材料費の上乗せと工賃を含めた費用を業者は提示します。そのため1社のみの見積の場合、どこの企業も利益を重視したいため、割高な見積となってしまいます。
  br/
 .row.center
    .col-sm-12
-     =image_tag 'worries.webp', class: 'center entire-image'
+     =image_tag 'front2.webp', class: 'center entire-image'
+
+.row#anchor
+   .col-sm-12.center
+     h2.surprise
+        | 一括見積で価格を調整できる
+
+.top-wrapper
+ br
+ p.center 工事業界では一括見積を使用することにより、各社毎に競合が発生するため、価格競争の原理が発生します。これにより材料費や工賃を抑えて提示されるため、素材が同じ場合でも大きな価格差が発生します。
+ br/
+.row.center
+   .col-sm-12
+     =image_tag 'front3.webp', class: 'center entire-image'
 
 
 hr.line
@@ -67,10 +190,10 @@ br
    .col-sm-12.center
      h2.push
       span
-       | お任せください！
+       | 今のあなたの見積より安くなる！
        br
        br
-       | 最適な外構工事業者が見つかる！
+       | 当社加盟店が徹底実現します！
 br/
 hr.line
 br
@@ -138,54 +261,17 @@ br
 br
 br
 
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | 総合力が問われるエクステリア
-.top-wrapper
- p.center 外構工事・エクステリア工事は単純に費用だけで選ぶのではなく、非常にセンスや技術も求められる領域となります。エクステリア領域は自宅の中とは違い、誰からも見ることができる空間となり、その周囲の方からの客観的な評判にも繋がります。そのため費用・技術・センス等と総合的な判断で外構工事・エクステリア工事を決定することが鍵となります。
- br
-
- br
- br/
-.row.center
-   .col-sm-12
-     =image_tag 'total.webp', class: 'center entire-image'
-
-br
-br
 
 .row#anchor
    .col-sm-12.center
      h2.surprise
-        | 同じ範囲でも料金が大きく違う
+        | 厳選した業者が責任を持って対応
 .top-wrapper
- p.center 外構工事・エクステリア工事は、一般的な価格設定はなく、基本的には施工業者の加減一つで料金が決められます。そのため同じ範囲の外構工事・エクステリア工事を依頼した場合でも、大きく金額が異なります。もちろん金額以外にも技術・素材・センス等ありますが、ぼったくりと呼ばれるような業者もあるのが事実なので十分に注意しましょう。
- br
-
- br
+ p.center エクステリアガーデンでは、外構工事業者は事前審査を通過した業者のみを厳選してご紹介していますので、安心してご利用をいただけます。
  br/
 .row.center
    .col-sm-12
-     =image_tag 'price.webp', class: 'center entire-image'
-
-
-br
-br
-
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | 完成してからの後悔は一生の後悔
-.top-wrapper
- p.center 外構工事・エクステリア工事を依頼し失敗する例は意外と多くあります。施工業者の中には、支払った半金の持ち逃げ・音信不通もよく耳にします。完成してからの修正が応じてもらえないことも多く、泣き寝入りすることがないよう、しっかりと事前に見積を取得し、信頼できる業者に依頼しましょう。
- br
-
- br
- br/
-.row.center
-   .col-sm-12
-     =image_tag 'oh.webp', class: 'center entire-image'
+     =image_tag 'front4.webp', class: 'center entire-image'
 
 
 br
@@ -278,7 +364,7 @@ br/
            | 栃木県
        tr
          th
-           = image_tag "user.webp", width:"100%";
+           = image_tag "review1.webp", width:"100%";
          td
            | 新居を建てるのに業者選びで使用しましたが、エクステリアガーデンさんのおかげで安心して工事を任せることができました。一括見積もりの機能が非常に便利で、比較しながら最適な業者を選べました。
  .col-sm-6
@@ -292,7 +378,7 @@ br/
            | 北海道
        tr
          th
-           = image_tag "user.webp", width:"100%";
+           = image_tag "review2.webp", width:"100%";
          td
            | 多数の業者から見積もりを取ることができ、費用の透明性が増しました。結果的に予算内で希望通りの工事ができたので、大変満足しています。個人的に見積差が80万円ほどあったので見積しておいてよかったと思いました。
 br/
@@ -308,7 +394,7 @@ br/
            | 神奈川県
        tr
          th
-           = image_tag "user.webp", width:"100%";
+           = image_tag "review3.webp", width:"100%";
          td
            | エクステリアガーデンを利用し、最安値業者より技術力や素敵なエクステリアを仕上げていただける業者様を探しておりました。料金はやや高めでしたが、実績も豊富で希望通りの施工会社をご案内いただけました。
  .col-sm-6
@@ -322,7 +408,7 @@ br/
            | 三重県
        tr
          th
-           = image_tag "user.webp", width:"100%";
+           = image_tag "review4.webp", width:"100%";
          td
            | リノベーションを行う際、エクステリア工事も依頼したく、エクステリアガーデンを利用してみました。予算に限りもある中で、良質な業者を一括見積できたので、満足できました。
 br/

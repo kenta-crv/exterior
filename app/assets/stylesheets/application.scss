@@ -673,6 +673,7 @@ table.company {
 
 .red {
   color: red;
+  font-weight:bold;
 }
 
 .label {
@@ -1356,4 +1357,58 @@ table.right {margin:5px 50px 5px 0px;}
     align-items: center;
     text-align: center;
   }
+}
+
+.info-row {
+  display: flex;
+  flex-wrap: wrap; /* モバイル用 */
+  align-items: baseline;
+  gap: 0.8rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: #222;
+  white-space: nowrap;
+  text-align:center;
+}
+
+.dark-red {
+  color: #d32f2f;
+  font-weight:bold;
+  .unit {
+    font-size: 24px;
+  }
+  .digit {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+}
+.dark-red {
+  color: #d32f2f;
+  font-weight:bold;
+  text-align:right; 
+  .unit {
+    font-size: 24px;
+  }
+  .digit {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+.before {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.arrow {
+  font-size: 20px;
+  color: #888;
+  margin: 0 4px;
+}
+
+.after {
+  color: #111;
 }
