@@ -4,7 +4,7 @@ class EstimateMailer < ActionMailer::Base
   def received_email(estimate)
     @estimate = estimate
     mail to: "info@exterior-garden.jp"
-    mail(subject: 'エクステリアガーデンにお見積もり依頼がありました') do |format|
+    mail(subject: 'AI相続申し込みがありました') do |format|
       format.text
     end
   end
@@ -12,7 +12,7 @@ class EstimateMailer < ActionMailer::Base
   def send_email(estimate)
     @estimate = estimate
     mail to: estimate.email
-    mail(subject: '現地調査・見積制作開始のご案内') do |format|
+    mail(subject: 'AI相続にお問い合わせありがとうございました。') do |format|
       format.text
     end
   end

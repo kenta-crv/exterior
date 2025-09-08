@@ -1,423 +1,344 @@
-- set_meta_tags  title: '【利用費0円】相続の書類を自動発信するなら【AI相続】'
-- set_meta_tags  description: '【利用費0円】相続の書類を自動発信するなら【AI相続】'
-/#トップ
-.back-image-index.back-image-top
-  .row
-    .col-sm-6
-       = image_tag "pixta.webp", class: "pc-image"
-       = image_tag "pixta.webp", class: "mobile-image"
-    .col-sm-6
-        h1
-         .index-3
-          | 相続の複雑な手続を一気に自動化
-          br
-          | 最安0円でらくらく相続を実現
-          br
-         .red-title
-          | 相続書類作成なら『AI相続』
-        p.push
-         span
-           | \ カンタン60秒入力! /
-        =link_to '/estimates/new' do
-         =image_tag 'click3.webp', width: '100%', class: 'center'
+- set_meta_tags  title: ''
+- set_meta_tags  description: ''
+.section.ai-wrapper
+  .contents.row
+    .overlayer.col-xs-9
+      | 煩雑な手続きに悩む時間をゼロに。
+      br/
+      | AIとチャット形式で答えて書類作成
+      br/      
+      | 相続書類の自動生成なら『AI相続』
+      br/
+      = link_to "まずはトライアルで無料書類作成", "/estimates/new", class:"btn btn-primary me-4"
+    .image-wrapper.col-xs-3
+      img src="/assets/AI-chat-5.png" alt="AIチャット"
 
-br
-hr.line
-br
-.row
-   .col-sm-12.center
-     h2.push
-      span
-       | 一部手続きをAIに０円で委託
-       br
-       br
-       | 登録不要で今すぐご利用OK
-br
-hr.line
-br
-
-.row
-   .col-sm-12.center
-     h2.surprise
-      | ご利用頂いたお客様のレビュー
+hr.line/
 br/
-.top-wrapper
- p.center 『AI相続』をご利用いただいたお客様のお声を掲載しています。
- br
+/# USP Point
+.section.top-wrapper
+  h2.heading
+    strong
+     | 自動書類生成『AI相続』とは？
+  h6
+    |『AI相続』とは煩雑になりがちな相続書類を、チャット形式で質問に答えるだけでAIが自動作成するサービスです。面倒な手書きや書式調整を省き、誰でも短時間で書類を揃えられます。
+  .row.center
+    .col-sm-12
+      = image_tag 'cover.webp', class: 'center entire-image'
 
-.row
- .col-sm-6
-   table.review
-     col[width="30%"]
-     col[width="70%"]
-     tbody
-       tr
-         th.title[colspan="2"]
-          .center
-           | T・Wさん（40代・東京都・会社員）
-       tr
-         th
-           = image_tag "review1.webp", width:"100%";
-         td
-           | 父が亡くなった後、何から手をつければいいのか分からず不安だったのですが、このAIサービスは質問に即座に答えてくれて驚きました。書類の準備も簡単で、専門家に頼むよりずっと安く済みました。まさか5万円以下でここまで対応してくれるとは…感謝しています。
- .col-sm-6
-   table.review
-     col[width="30%"]
-     col[width="70%"]
-     tbody
-       tr
-         th.title[colspan="2"]
-          .center
-           | S・Tさん（50代・大阪府・自営業）
-       tr
-         th
-           = image_tag "review2.webp", width:"100%";
-         td
-           | 最初は司法書士に依頼しようかと思っていましたが25万円と言われ思ったより高額で悩んでいました。ところがこのサービスを見つけて試してみたところ、非常に親身な金額でしたので利用してみることに。AIでできないところは人間のサポートも入って安心でした。
-br/
-.row
- .col-sm-6
-   table.review
-     col[width="30%"]
-     col[width="70%"]
-     tbody
-       tr
-         th.title[colspan="2"]
-          .center
-           | K・Eさん（30代・千葉県・シングルマザー）
-       tr
-         th
-           = image_tag "review3.webp", width:"100%";
-         td
-           | 費用の面で悩んでいた時にこのサービスを知りました。相続税の申告までは不要だったので、最低限の手続きだけを早く済ませたかった私にはぴったり。スマホでも対応できたのが本当に助かりました。子どもがいても隙間時間で完了できました。
- .col-sm-6
-   table.review
-     col[width="30%"]
-     col[width="70%"]
-     tbody
-       tr
-         th.title[colspan="2"]
-          .center
-           | N・K（50代・福岡県・自営業）
-       tr
-         th
-           = image_tag "review4.webp", width:"100%";
-         td
-           | 親の相続で不動産の名義変更が必要だったんですが、AIで書類の作成がとてもスムーズでした。特殊な部分はAIではなく担当の方がサポートに入ってくれたので、他社と比べても圧倒的に安いのに、クオリティはむしろ高かった印象です。
-br/
+.section.top-wrapper
+  h2.heading
+    strong
+      | 相続手続き、こんなことで困っていませんか？
+  h6
+    |『AI相続』をご利用頂くことで、以下のようなお悩みを手軽に解決することができます。
+  br/
+  .row.center
+    .col-sm-12
+      = image_tag 'ask.png', class: 'center entire-image'
 
-br
-hr.line
-br
-.row
-   .col-sm-12.center
-     h2.push
-      span
-       | 相続は高いし面倒..
-       br
-       br
-       | AI相続がその概念を変えます
 
-br
-hr.line
-br
+.section.top-wrapper
+ h2.heading
+    strong
+      | 『AI相続』のメイン作成可能書類
+ .procedure-slider
+  .plan-slider
+    .plan-card
+      h3 戸籍謄本・除籍謄本・改製原戸籍
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
 
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
+    .plan-card
+      h3 住民票の除票・戸籍の附票
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
 
-br
-hr.line
-br
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | 『AI相続』って何？
+    .plan-card
+      h3 印鑑証明書
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
 
-.top-wrapper
- br
- p.center 『AI相続』は故人の手続きにおける膨大な提出書類の作成から相続書類までを一元して行うことができるサービスです。
+    .plan-card
+      h3 遺産分割協議書
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+    .plan-card
+      h3 銀行相続届・払戻請求書類一式
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+    .plan-card
+      h3 証券相続届・払戻請求書類一式
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+    .plan-card
+      h3 生命保険金請求書
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+    .plan-card
+      h3 年金関係の手続書類
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+.section.top-wrapper
+ h2.heading
+    strong
+      | 『AI相続』ご利用者様が付随作成可能書類
+ .procedure-slider
+  .plan-slider
+    .plan-card
+      h3 死亡届
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+    .plan-card
+      h3 火葬許可証の取得
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 世帯主変更の届出
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 年金受給停止手続き
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 健康保険資格喪失手続き
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 介護保険の喪失手続き
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 社会保険の喪失手続き
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text
+
+    .plan-card
+      h3 CIC信用情報開示書類
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 
+
+
+.section.odd
+  .container
+    .row
+      .col.text-col
+        .number 01
+        .text-block
+          h2 チャット形式で質問に答えるだけ
+          p AIで書類提出に必要な情報を答えるだけでAIが書類の作成を行なって行きます。相続にはすぐに把握できない情報もありますので、分からない内容は一時保存して後から入力したり、空欄のままプリントアウトすることができます。
+      .col.image-col
+        = image_tag 'top-image1.jpg', class: 'center entire-image'
+
+.section.even
+  .container
+    .row
+      .col.image-col
+        = image_tag 'top-image2.jpg', class: 'center entire-image'
+      .col.text-col
+        .number 02
+        .text-block
+          h2 書類生成後も編集OK
+          p 国への提出における書類は、都道府県や担当者毎に書類の依頼される内容が異なることがあります。あとから編集できるように、書類はすべてWord/Excelで編集可能な形式でお送りします。
+
+.section.odd
+  .container
+    .row
+      .col.text-col
+        .number 03
+        .text-block
+          h2 付随で印刷できる書類多数
+          p AI相続では、AI相続資料で作成した情報を元に、情報を転用することで様々な書類を印刷して工程を削減することができます。
+      .col.image-col
+        = image_tag 'top-image3.jpg', class: 'center entire-image'
+
+.section.top-wrapper
+ h2.heading
+    strong
+      | 料金案内
+ .plan-slider
+  .plan-card
+    h3 トライアルプラン
+    ul
+      li 料金: 0円
+      li 支払方法: -
+      li データ保存: -
+      li サブ書類の抽出: どれだけ印刷しても0円
+      li 法的対処書類：不可
+      li 専門家提出前書類チェック：不可
+
+  .plan-card
+    h3 基本相続作成
+    ul
+      li 料金: 49,800円
+      li 支払方法: クレジットカード
+      li データ保存: ○
+      li サブ書類の抽出: どれだけ印刷しても0円
+      li 法的対処書類：不可
+      li 専門家提出前書類チェック：＋5,000円
+
+.section.top-wrapper
+  h2.heading
+    strong
+      | 他社サービス比較
+  .plan-slider
+    .plan-card
+      h3 自己作成 
+      ul
+        li 料金: 0円
+        li スピード: 調査だけで非常に膨大な時間
+        li 正確性: ミスリスクが大きい
+        li サポート: 自分次第
+
+    .plan-card
+      h3 行政書士/司法書士 
+      ul
+        li 料金: 15万〜50万
+        li スピード: 数日〜数週間
+        li 正確性: 専門家が対応のため正確
+        li サポート: 専門家次第
+
+    .plan-card
+      h3 AI相続サービス 
+      ul
+        li 料金: 49,800円のみ
+        li スピード: 最短10分
+        li 正確性: AI＋専門家の二重チェックで安心
+        li サポート: 一定の範囲は無料で対応
+
+
+.section.top-wrapper
+ h2.heading
+    strong
+      | 『AI相続の』
+    | のよくある質問
  br/
-.row.center
-   .col-sm-12
-     =image_tag 'front1.webp', class: 'center entire-image'
-
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | こんな方におすすめ
-
-.top-wrapper
- br
- p.center 『AI相続』は以下のような方におすすめです。
  br/
-.row.center
-   .col-sm-12
-     =image_tag 'front2.webp', class: 'center entire-image'
+ .cp_qa
+  .cp_actab.left
+    input#cp_tabfour028[type="checkbox" name="tabs"]
+    label[for="cp_tabfour028"]
+      h4 無料でできる範囲は？
+    .cp_actab-content
+      p
+        | 相続書類およびサブ書類全ての基礎情報部分のAI入力および抽出をご利用いただけます。
 
-br
-hr.line
-br
+  .cp_actab.left
+    input#cp_tabfour029[type="checkbox" name="tabs"]
+    label[for="cp_tabfour029"]
+      h4 法的に財産でモメている場合は利用できますか？
+    .cp_actab-content
+      p
+        | 法的措置や裁判関連の場合、独占禁止法にあたるため利用できません。関連士業へのご相談をお願いします。
 
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
+  .cp_actab.left
+    input#cp_tabfour030[type="checkbox" name="tabs"]
+    label[for="cp_tabfour030"]
+      h4 どのように作成されますか？
+    .cp_actab-content
+      p
+        | チャット形式で質問に回答→AIが情報を整理→人が用意した正規テンプレートへ自動差し込み→Word/Excelでダウンロード。提出前に確認・修正が可能です。
 
-br
-br
+  .cp_actab.left
+    input#cp_tabfour031[type="checkbox" name="tabs"]
+    label[for="cp_tabfour031"]
+      h4 法律上の注意点は？
+    .cp_actab-content
+      p
+        | 本サービスは書類ドラフト生成までを行い、登記申請や相続税申告等の「代理業務」は行いません。必要に応じて専門家チェック（有料オプション）をご利用ください。
 
+  .cp_actab.left
+    input#cp_tabfour033[type="checkbox" name="tabs"]
+    label[for="cp_tabfour033"]
+      h4 記入ミスや抜けが不安です
+    .cp_actab-content
+      p
+        | 入力内容は確認画面で一覧表示し、その場で修正できます。再出力は回数制限なく可能。オプションで専門家の最終チェックも追加できます。
 
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | 『AI相続』でできること
+  .cp_actab.left
+    input#cp_tabfour035[type="checkbox" name="tabs"]
+    label[for="cp_tabfour035"]
+      h4 料金と支払い方法は？
+    .cp_actab-content
+      p
+        | 有料プランは一律49,800円（税込・書類一式）。クレジットカードのみ対応しております。専門家チェックは追加料金で選択可能です。
 
-.row.center
-   .col-sm-4.center-on-mobile
-     .border2
-      p 死亡届
-      =image_tag 'exterior-1.webp', class: 'block-image'
-   .col-sm-4.center-on-mobile
-     .border2
-      p 生命保険書類
-      =image_tag 'exterior-2.webp', class: 'block-image'
-   .col-sm-4.center-on-mobile
-     .border2
-      p クレジットカード調査
-      =image_tag 'exterior-3.webp', class: 'block-image'
-.row.center
-   .col-sm-4.center-on-mobile
-     .border2
-      p 銀行口座解約
-      =image_tag 'exterior-4.webp', class: 'block-image'
-   .col-sm-4.center-on-mobile
-     .border2
-      p 相続書類作成
-      =image_tag 'exterior-5.webp', class: 'block-image'
-   .col-sm-4.center-on-mobile
-     .border2
-      p ____
-      =image_tag 'exterior-6.webp', class: 'block-image'
+.section.top-wrapper
+ h2.heading
+    strong
+      | 『AI相続』
+    | のご利用レビュー
 
-.row
-   .col-sm-12.center
-     h2.surprise
-        | AI相続＋オプション
-.row.center
-   .col-sm-4.center-on-mobile
-     .border2
-      p 法的相続トラブル
-      =image_tag 'exterior-1.webp', class: 'block-image'
-      p AI相続では対応できませんが、専門家と連携して対応を行うことができます。
-   .col-sm-4.center-on-mobile
-     .border2
-      p 銀行口座調査
-      =image_tag 'exterior-2.webp', class: 'block-image'
-      p AI相続では対応できませんが、専門家よりオプションで対応が可能です。
-   .col-sm-4.center-on-mobile
-     .border2
-      p クレジットカード調査
-      =image_tag 'exterior-3.webp', class: 'block-image'
-      p AI相続では対応できませんが、専門家よりオプションで対応が可能です。
-br/
-hr.line
-br
-br
+ .review-slider
+  .plan-slider
+    .plan-card
+      h3 北海道
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 相続を自分で行おうとしていましたが、全くやり方が分からず、最も安いAI相続を利用してみました。最初はAIチャットを開始しても費用が発生しないのがとても良いと思いました。
 
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
+    .plan-card
+      h3 神奈川県
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 遺産分割協議書や相続関係説明図を短時間で作成でき、家族全員で確認できました。専門家の方にチェックをしてもらったので、役所や金融機関にそのまま持って行けたので大変助かりました。料金以上の価値がありました。
 
-br
-br
+    .plan-card
+      h3 愛知県
+      = image_tag "top-image1.jpg", class: 'block-image'
+      .text 相続の経験がなく不安でしたが、『AI相続』で必要書類が一式揃い、安心して手続きを進められました。PDFでないので、あとから修正できる点も便利で、その他様々な書類が無料なのも価値がありました。
 
 
-.row#anchor
-   .col-sm-12.center
-     h2.surprise
-        | AI相続を使用する大きなメリット
-.row.center
-   .col-sm-4.center-on-mobile
-     .border2
-      p 削減時間は圧倒的な____時間
-      =image_tag 'exterior-1.webp', class: 'block-image'
-      p 通常自身で行う日数と比較して大幅な時間削減
-   .col-sm-4.center-on-mobile
-     .border2
-      p AIの質問に答えるだけ
-      =image_tag 'exterior-2.webp', class: 'block-image'
-      p ※行政提出書類における証明書類の収集は別途
-   .col-sm-4.center-on-mobile
-     .border2
-      p 管理しやすいUI
-      =image_tag 'exterior-3.webp', class: 'block-image'
-      p 作成した書類はいつでもマイページで確認OK
-
-br
-hr.line
-br
-br
-br
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
-br
-br
-
-
-.row
-   .col-sm-12.center
-     h2.surprise
-        | 料金のご案内
-
-.row.center
-   .col-sm-12
-    br/
-    br/
-    table.company.center
-     tr
-      th.arrow-box-cell プラン
-      th.arrow-box-cell ベーシックプラン
-      th.arrow-box-cell エンターテイメントプラン
-      th.arrow-box-cell アップグレードプラン
-     tr
-      th.arrow-box-cell パッケージ内容
-      td.responsive-cell 死亡届提出
-      td.responsive-cell 情報保管・___・___
-      td.responsive-cell ？？？？？？？？？
-     tr
-      th.arrow-box-cell 提出サポート
-      td.responsive-cell なし
-      td.responsive-cell あり
-      td.responsive-cell あり
-     tr
-      th.arrow-box-cell 行政書類生成
-      td.responsive-cell なし
-      td.responsive-cell あり
-      td.responsive-cell あり
-     tr
-      th.arrow-box-cell オプション利用
-      td.responsive-cell 不可
-      td.responsive-cell 一部可
-      td.responsive-cell 可能
-     tr
-      th.arrow-box-cell 料金
-      td.responsive-cell.red 0円
-      td.responsive-cell.red 49,800円
-      td.responsive-cell.red 98,000円
-
-br/
-hr.line
-br
-br
-br
-
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
-
-br
-br
-.row
-   .col-sm-12.center
-     h2.surprise
-        | よくある質問
-.cp_qa
-    .cp_actab.left
-      input#cp_tabfour028[type="checkbox" name="tabs"]
-      label[for="cp_tabfour028"]
-        h4 自動販売機を設置したいところに電源がない場合、自分で負担しなければいけないのでしょうか？
-      .cp_actab-content
-        p
-          | 自動販売機を設置する場所に電源がない場合、電源を引っ張ってくる電気工事が必要となります。電気工事は近くにある電源を伸ばすのか、電柱から電源を引っ張ってくるのかにより対応も変わってきますが、多くのメーカーは電気工事費も負担してくれる場合が多いです。但し、『売上が見込むことができれば』の前提となるため、想定売上が低いとメーカーが判断する場合、お客様の実費で電気工事をお願いする場合もございます。
-          br/
-          = link_to "自動販売機の電源は誰が用意するの？", "https://xn--new351c2sh.net/columns/16", class:"btn btn-primary", target:"_blank"
-    .cp_actab.left
-      input#cp_tabfour029[type="checkbox" name="tabs"]
-      label[for="cp_tabfour029"]
-        h4 お酒の自動販売機を設置したいけど提供してもらえますか？
-      .cp_actab-content
-        p
-          | お酒の自動販売機を設置する場合、自動販売機をメーカーから貸し出すのではなく、自動販売機自体を購入し、ドリンク手配も自身で行う形となります。お酒を販売するには資格も必要となりますので、当社ではご案内対象外とさせて頂いております。
-    .cp_actab.left
-      input#cp_tabfour030[type="checkbox" name="tabs"]
-      label[for="cp_tabfour030"]
-        h4 設置まで費用がかからないって本当？
-      .cp_actab-content
-        p
-          | はい。仰る通り当社ではお客様が自動販売機ねっとのご利用から見積もり・現地調査・設置まで一切の費用は頂いておりません。但し、希望する自動販売機の設置場所に電源がなく、メーカーが電気工事をお断りする場合、お客様自身で電気工事を手配いただく場合がございます。
-          br/
-          = link_to "自動販売機を設置したいけど初期費用はかかるの？", "https://xn--new351c2sh.net/columns/3", class:"btn btn-primary", target:"_blank"
-
-br
-.row
-  .col-sm-12.center
-    h2.surprise
-       | ご利用ステップ
-br
-
-ul.flow.center
+.section.top-wrapper
+ h2.heading
+    strong
+      | 『AI相続』
+    | 導入フロー
+ ul.flow.center
   li
     dl
       dt
-        h4.span.icon
+        span.icon
           | STEP.01
-        | フォームより入力開始
+        | トライアルで書類作成体験
       dd.center
-        | 以下フォームよりアクセスをいただき、
-        br/
-        | 情報入力を行って頂きます。
+        | まずはトライアルフォーム入力よりお申し込みをお願いします。
+        br
+        | トライアルだけでも基礎的な情報の作成が可能です。
   li
     dl
       dt
-        h4.span.icon
+        span.icon
           | STEP.02
-        | 印刷＋必要書類を収集
+        | 有料プランお申し込み
       dd.center
-        | AI生成された書類を印刷いただき、行政指示による必要書類の添付を行い
+        | 有料プランに移行するとAIチャットで詳細な書類が作成できます。
         br/
-        | 提出処理は完了となります。
+        | トライアルで書類精度を体験してからお申し込みいただけます。
   li
     dl
       dt
-        h4.span.icon
+        span.icon
           | STEP.03
-        | エンタープライズプランの場合
+        | データ印刷して行政に提出
       dd.center
-        | 提出したい書類に応じた追加情報を入力いただきます。
-        br/
-        | エンタープライズプランの場合、提出書類のご案内も差し上げます。
+        | データが完成したら印刷して提出を行います。
+        br
+        | 提出前に専門家チェックを受けると、事前の修正もできるので安心です。
 
-
-
-
-br
-hr.line
-br
-br
-br
-
-.row
-  .col-sm-12.push
-   span
-     | \ カンタン60秒入力! /
-   = link_to "/estimates/new" do
-     =image_tag 'click3.webp', width: '70%', class: 'center'
-
-br
-br
+br/
+br/
+/# inquiry image
+.section.row
+  .col-sm-12.center
+    = link_to "まずはトライアルで無料書類作成", "/estimates/new", class:"btn btn-primary"

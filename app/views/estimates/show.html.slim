@@ -12,39 +12,94 @@ table.company
     col width="10%"
     col width="20%"
     col width="70%"
+
   tr
     td
       strong.label.label-blue.point
         | Point
-        span.word 個人でフルネーム登録をされている場合、開示前に情報の公開を行うことになりますので、苗字のみに変更します。また、法人やマンション名がある場合、それに切り替えます。
+        span.word 個人でフルネーム登録されている場合、開示前に苗字のみの表示に変更されます。法人やマンション名の場合はそちらに切り替えます。
     td.arrow_box
-      | 担当者名
+      | お名前
     td
       = @estimate.name
+
+  tr
+    td
+    td.arrow_box
+      | 生年月日
+    td
+      = @estimate.birth
+
   tr
     td
     td.arrow_box
       | 携帯番号
     td
       = @estimate.tel
+
   tr
     td
     td.arrow_box
-      | 施工先住所
+      | 郵便番号
     td
-      = @estimate.address
+      = @estimate.postnumber
+
+  tr
+    td
+    td.arrow_box
+      | 都道府県
+    td
+      = @estimate.prefecture
+
+  tr
+    td
+    td.arrow_box
+      | 市町村
+    td
+      = @estimate.city
+
+  tr
+    td
+    td.arrow_box
+      | 番地
+    td
+      = @estimate.city2
+
+  tr
+    td
+    td.arrow_box
+      | ビル名
+    td
+      = @estimate.building
+
   tr
     td
     td.arrow_box
       | メールアドレス
     td
       = @estimate.email
+
   tr
     td
     td.arrow_box
-      | 施工内容
+      | 使いたい機能
     td
       = @estimate.which_one
+
+  tr
+    td
+    td.arrow_box
+      | 導入時期
+    td
+      = @estimate.period
+
+  tr
+    td
+    td.arrow_box
+      | その他
+    td
+      = @estimate.remarks
+
   tr
     td
     td.arrow_box
@@ -52,41 +107,33 @@ table.company
     td
       = @estimate.square_meter
       | m2
+
   tr
     td
     td.arrow_box
       | 他社で見積り・図面を取得済み？
     td
       = @estimate.bring
+
   tr
     td
     td.arrow_box
       | 施工決定の重要点
     td
       = @estimate.importance
+
   tr
     td
     td.arrow_box
       | 希望施工予定月
     td
       = @estimate.schedule
-  tr
-    td
-    td.arrow_box
-      | 業者決定希望時期
-    td
-      = @estimate.period
-  tr
-    td
-    td.arrow_box
-      | 要望・備考
-    td
-      = @estimate.remarks
 
-h2.headline  
+
+/h2.headline  
   | 調査進捗　
 
-table.company[width="100%"]
+/table.company[width="100%"]
   thead
     tr
       th ロゴ
@@ -96,7 +143,7 @@ table.company[width="100%"]
       th 備考
       th 操作
 
-  tbody
+  /tbody
     - @estimate.client_comments.each do |client_comment|
       - client = client_comment.client
       tr

@@ -5,121 +5,114 @@
     - @estimate.errors.each do |attr, msg|
       li= msg
     br
+
 .company-wrapper
- table.company.responsive-table
-      colgroup
-        col.col-1
-        col.col-2
-        col.col-3
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | お名前
-        td.responsive-cell
-         .input-container
-          = f.text_field :name
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 携帯番号
-        td.responsive-cell
-         .input-container
-          = f.telephone_field :tel
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 施工先住所
-        td.responsive-cell
-         .input-container
-          = f.text_field :address, placeholder:"※わかる範囲で詳細まで記載をお願い致します。"
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | メールアドレス
-        td.responsive-cell
-         .input-container
-          = f.email_field :email
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 施工内容
-        td.responsive-cell
-         .input-container
-          = f.select(:which_one,[\
-          ["新築","新築"],
-          ["全体リフォーム","全体リフォーム"],
-          ["一部リフォーム","一部リフォーム"],
-          ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label.blue_label 任意
-        td.arrow-box-cell
-          | 屋外平米数
-        td.responsive-cell
-         .input-container
-          = f.text_field :square_meter
-          |m2
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 既に他社で見積りや図面を取得済みですか？
-        td.responsive-cell
-         .input-container
-          = f.select(:bring,[\
-            ["はい","はい"],\
-            ["いいえ","いいえ"],\
-            ["未定","未定"],\
-           ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 施工決定における重要点を教えてください。
-        td.responsive-cell
-         .input-container
-          = f.select(:importance,[\
-            ["最安値重視","最安値重視"],\
-            ["丁寧な対応","丁寧な対応"],\
-            ["スピーディーな対応","スピーディーな対応"],\
-            ["実績のある業者","実績のある業者"],\
-            ["保証・アフターフォロー","保証・アフターフォロー"],\
-            ["未定","未定"],\
-           ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 希望施工予定月
-        td.responsive-cell
-          .input-container
-            = f.select :schedule, (0..11).map { |i| [(Date.today >> i).strftime('%Y年%m月'), (Date.today >> i).strftime('%Y-%m')] }, { include_blank: '選択してください' }, class: 'form-control'
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | いつまでに業者を決定したいですか？
-        td.responsive-cell
-         .input-container
-          = f.select(:period,[\
-            ["すぐにでも","すぐにでも"],\
-            ["１ヶ月以内","３ヶ月以内"],\
-            ["３ヶ月以内","３ヶ月以内"],\
-           ],include_blank: "選択してください")
-      tr
-        td.label-cell
-          strong.label.label-blue 任意
-        td.arrow-box-cell
-          | 要望・備考
-        td.responsive-cell
-         .input-container
-          = f.text_area :remarks, placeholder:"※施工に関する要望等"
-      tr
-        td colspan="3"
-         .center
+  table.company.responsive-table
+
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | お名前
+      td.responsive-cell
+        .input-container
+          = f.text_field :name, placeholder: "例：山田太郎"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 生年月日
+      td.responsive-cell
+        .input-container
+          = f.date_field :birth
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 電話番号
+      td.responsive-cell
+        .input-container
+          = f.telephone_field :tel, placeholder: "例：090-1234-5678"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 郵便番号
+      td.responsive-cell
+        .input-container
+          = f.text_field :postnumber, placeholder: "例：123-4567"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 都道府県
+      td.responsive-cell
+        .input-container
+          = f.text_field :prefecture, placeholder: "例：東京都"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 市町村
+      td.responsive-cell
+        .input-container
+          = f.text_field :city, placeholder: "例：新宿区"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 番地
+      td.responsive-cell
+        .input-container
+          = f.text_field :city2, placeholder: "例：1-2-3"
+
+    tr
+      td.label-cell
+        strong.label-blue 任意
+      td.arrow-box-cell
+        | ビル名
+      td.responsive-cell
+        .input-container
+          = f.text_field :building, placeholder: "例：〇〇ビル101号室"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | メールアドレス
+      td.responsive-cell
+        .input-container
+          = f.email_field :email, placeholder: "例：example@example.com"
+
+    tr
+      td.label-cell
+        strong.label 必須
+      td.arrow-box-cell
+        | 使いたい機能
+      td.responsive-cell
+        .input-container
+          = f.select :which_one, [\
+              ["トライアル【0円】", "トライアル"],\
+              ["基本相続作成【49,800円】", "有料プラン"],\
+              ["基本相続作成＋専門家チェック【+3000円】", "基本相続作成＋専門家チェック【+3000円】"]\
+            ], include_blank: "選択してください"
+    tr
+      td.label-cell
+        strong.label-blue 任意
+      td.arrow-box-cell
+        | 備考
+      td.responsive-cell
+        .input-container
+          = f.text_area :remarks, placeholder: "任意でご記入ください"
+
+    tr
+      td colspan="3"
+        .center
           = f.submit "確認画面", class: "btn btn-success"

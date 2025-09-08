@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
 
 
@@ -44,6 +46,34 @@ document.querySelectorAll('td.hoverable').forEach(function(element) {
       element.addEventListener('mouseout', function() {
         document.body.removeChild(popup);
       });
+    }
+  });
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".row-slider .slider-wrapper");
+  const nextBtn = document.querySelector(".row-slider .next-btn");
+  const blocks = document.querySelectorAll(".row-slider .block");
+  let index = 0;
+
+  const isMobile = () => window.innerWidth <= 599;
+
+  nextBtn.addEventListener("click", () => {
+    if (!isMobile()) return;
+
+    index = Math.min(index + 1, blocks.length - 1);
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+    wrapper.style.transition = "transform 0.5s ease";
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobile()) {
+      wrapper.style.transform = "none";
+      wrapper.style.transition = "none";
+      index = 0;
     }
   });
 });

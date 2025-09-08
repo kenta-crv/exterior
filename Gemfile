@@ -102,3 +102,5 @@ gem "jquery-rails"
 
 gem 'whenever', require: false
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'jquery-rails'

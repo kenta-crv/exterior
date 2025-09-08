@@ -4,10 +4,17 @@ class Estimate < ApplicationRecord
   has_one :transfer, dependent: :destroy
   has_many :progresses, dependent: :destroy
   has_many :payments, dependent: :destroy
-  validates :name, presence: { message: '名前が入力されていません。' }, on: :create
-  validates :tel, presence: { message: '電話番号が入力されていません。' }, on: :create
-  validates :email, presence: { message: 'メールアドレスが入力されていません。' }, on: :create
-  validates :address, presence: { message: '住所が入力されていません。' }, on: :create
+validates :name, presence: { message: '名前が入力されていません。' }, on: :create
+validates :birth, presence: { message: '生年月日が入力されていません。' }, on: :create
+validates :tel, presence: { message: '電話番号が入力されていません。' }, on: :create
+validates :postnumber, presence: { message: '郵便番号が入力されていません。' }, on: :create
+validates :prefecture, presence: { message: '都道府県が入力されていません。' }, on: :create
+validates :city, presence: { message: '市町村が入力されていません。' }, on: :create
+validates :city2, presence: { message: '番地が入力されていません。' }, on: :create
+validates :building, presence: { message: 'ビル名が入力されていません。' }, on: :create
+validates :email, presence: { message: 'メールアドレスが入力されていません。' }, on: :create
+validates :which_one, presence: { message: '使用したい機能が選択されていません。' }, on: :create
+validates :period, presence: { message: '導入時期が入力されていません。' }, on: :create
 
   has_many :client_comments, dependent: :destroy
   

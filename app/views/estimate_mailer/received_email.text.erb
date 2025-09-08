@@ -1,16 +1,15 @@
-エクステリアガーデンにお問い合わせがありました。
+AI相続にお問い合わせがありました。
 
 --------------------------
 お名前: <%= @estimate.name %>
+生年月日: <%= @estimate.birth %>
 電話番号: <%= @estimate.tel %>
-施工先住所: <%= @estimate.address %>
+郵便番号: <%= @estimate.postnumber %>
+都道府県: <%= @estimate.prefecture %>
+市町村: <%= @estimate.city %>
+番地: <%= @estimate.city2 %>
+ビル名: <%= @estimate.building %>
 メールアドレス: <%= @estimate.email %>
-施工内容: <%= @estimate.which_one %>
-屋外平米数: <%= @estimate.square_meter %>m2
-既に他社で見積りや図面を取得済みですか？: <%= @estimate.bring %>
-施工決定における重要点を教えてください。: <%= @estimate.importance %>
-希望施工予定月: <%= @estimate.schedule %>
-いつまでに業者を決定したいですか？: <%= @estimate.period %>
+使いたい機能: <%= @estimate.which_one %>
 要望・備考: <%= @estimate.remarks %>
 --------------------------
-

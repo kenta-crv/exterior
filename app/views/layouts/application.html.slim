@@ -6,15 +6,11 @@ html
       .row
         .col-xs-3
            = link_to "/"
-            =image_tag "rogo.webp", class:"header-image", alt:"自動販売機の設置なら一括見積もりの自販機ねっと"
+            =image_tag "rogo.webp", class:"header-image"
         .col-xs-7
          
         .col-xs-2
-                .navToggle
-                  span
-                  span
-                  span
-                  span menu
+
       .navi
        - if admin_signed_in? && current_page?(estimates_path)
          .row
@@ -53,5 +49,3 @@ html
   br
   - if client_signed_in? 
   - else
-   footer
-    = render template: 'layouts/_footer.html.slim'
